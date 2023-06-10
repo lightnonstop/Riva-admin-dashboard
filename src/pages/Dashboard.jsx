@@ -1,50 +1,93 @@
 import React from 'react'
 import { BsArrowDownRight } from 'react-icons/bs'
 import { Column } from '@ant-design/plots';
+import { Table } from 'antd';
+const columns = [
+	{
+		title: 'Name',
+		dataIndex: 'name',
+	},
+	{
+		title: 'Age',
+		dataIndex: 'age',
+	},
+	{
+		title: 'Address',
+		dataIndex: 'address',
+	},
+];
+const data1 = [];
+for (let i = 0; i < 46; i++){
+	data1.push({
+		key: i,
+		name: `Edward king ${i}`,
+		age: 32,
+		address: `London, Park Lane no. ${i}`,
+	});
+}
 function Dashboard() {
 	const data = [
 		{
-			type: '家具家电',
+			type: 'Jan',
 			sales: 38,
 		},
 		{
-			type: '粮油副食',
+			type: 'Feb',
 			sales: 52,
 		},
 		{
-			type: '生鲜水果',
+			type: 'Mar',
 			sales: 61,
 		},
 		{
-			type: '美容洗护',
+			type: 'Apr',
 			sales: 145,
 		},
 		{
-			type: '母婴用品',
+			type: 'May',
 			sales: 48,
 		},
 		{
-			type: '进口食品',
+			type: 'Jun',
 			sales: 38,
 		},
 		{
-			type: '食品饮料',
+			type: 'Jul',
 			sales: 38,
 		},
 		{
-			type: '家庭清洁',
+			type: 'Aug',
 			sales: 38,
 		},
+		{
+			type: 'Sep',
+			sales: 38,
+		},
+		{
+			type: 'Oct',
+			sales: 38,
+		},
+		{
+			type: 'Nov',
+			sales: 38,
+		},
+		{
+			type: 'Dec',
+			sales: 38,
+		}
 	];
 	const config = {
 		data,
 		xField: 'type',
 		yField: 'sales',
+		color: ({ type }) => {
+			return '#6fdc87';
+		},
 		label: {
 			position: 'middle',
 			style: {
 				fill: '#FFFFFF',
-				opacity: 0.6,
+				opacity: 1,
 			},
 		},
 		xAxis: {
@@ -55,10 +98,10 @@ function Dashboard() {
 		},
 		meta: {
 			type: {
-				alias: '类别',
+				alias: 'Month',
 			},
 			sales: {
-				alias: '销售额',
+				alias: 'Income',
 			},
 		},
 	};
@@ -101,6 +144,14 @@ function Dashboard() {
 				<h3 className='mb-4'>Income Statistics</h3>
 				<div>
 					<Column {...config} />;
+				</div>
+			</div>
+			<div className="mt-4">
+				<h3 className="mb-0">
+					Recent Orders
+				</h3>
+				<div>
+					<Table columns={columns} dataSource={data1} />
 				</div>
 			</div>
 		</div>
