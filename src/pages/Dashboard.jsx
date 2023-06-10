@@ -115,7 +115,7 @@ function Dashboard() {
 						<h4 className='mb-0'>$110</h4>
 					</div>
 					<div className='d-flex flex-column align-items-end'>
-						<h6 className=''><BsArrowDownRight /> 32%</h6>
+						<h6><BsArrowDownRight /> 32%</h6>
 						<p className='mb-0'>Compare to April, 2023</p>
 					</div>
 				</div>
@@ -143,7 +143,7 @@ function Dashboard() {
 			<div className="mt-4">
 				<h3 className='mb-4'>Income Statistics</h3>
 				<div>
-					<Column {...config} />;
+					<Column {...config} />
 				</div>
 			</div>
 			<div className="mt-4">
