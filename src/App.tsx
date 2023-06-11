@@ -1,18 +1,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import ResetPassword from './pages/ResetPassword';
-import ForgotPassword from './pages/ForgotPassword';
-import MainLayout from './components/MainLayout';
-import Dashboard from './pages/Dashboard';
-import Enquiries from './pages/Enquiries';
-import BlogList from './pages/BlogList';
-import BlogCategoryList from './pages/BlogCategoryList';
-import Orders from './pages/Orders';
-import Customers from './pages/Customers';
-import ColorList from './pages/ColorList';
-import CategoryList from './pages/CategoryList';
+import { AddBlog, AddBlogCategory, AddColor, BlogCategoryList, BlogList, BrandList, CategoryList, ColorList, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, ProductList, ResetPassword } from './pages';
+import { MainLayout } from './components';
+import AddCategory from './pages/AddCategory';
 function App() {
   return (
     <Router>
@@ -25,11 +16,17 @@ function App() {
 					<Route path='enquiries' element={<Enquiries />} />
 					<Route path='blog-list' element={<BlogList />} />        
 					<Route path='blog-category-list' element={<BlogCategoryList />} />
+					<Route path='blog-category' element={<AddBlogCategory />} />
 					<Route path='orders' element={<Orders />} />
 					<Route path='color-list' element={<ColorList />} />
+					<Route path='color' element={<AddColor />} />
 					<Route path='customers' element={<Customers />} />
-					<Route path='list-category' element={<CategoryList />} />
-				</Route>
+					<Route path='category-list' element={<CategoryList />} />
+					<Route path='category' element={<AddCategory />} />
+					<Route path='brand-list' element={<BrandList />} />
+					<Route path='product-list' element={<ProductList />} />
+					<Route path='blog' element={<AddBlog />} />
+			</Route>
       </Routes>
     </Router>
   );

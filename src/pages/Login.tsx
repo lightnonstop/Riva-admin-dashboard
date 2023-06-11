@@ -14,7 +14,10 @@ function Login() {
         <form action="">
           <Input type='text' label='Email Address' i_id='email' />
           <Input type='password' label='Password' i_id='password' />
-          <Link className='border-0 fw-bold px-3 py-2 w-100 text-white' type='submit' style={{ backgroundColor: '#6fdc87' }}>Login</Link>
+          <div className='mb-3 text-end'>
+            <Link to='/forgot-password' className=''>Forgot Password?</Link>
+          </div>
+          <Link to='/admin' className='border-0 fw-bold px-3 py-2 w-100 text-white text-center text-decoration-none fs-5' type='submit' style={{ backgroundColor: '#6fdc87' }}>Login</Link>
         </form>
       </div>
     </div>

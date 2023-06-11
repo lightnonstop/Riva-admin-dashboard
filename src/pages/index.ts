@@ -1,0 +1,16 @@
+export { default as Login } from './Login';
+export { default as ResetPassword } from './ResetPassword';
+export { default as ForgotPassword } from './ForgotPassword';
+export { default as Dashboard } from './Dashboard';
+export { default as Enquiries } from './Enquiries';
+export { default as BlogList } from './BlogList';
+export { default as BlogCategoryList } from './BlogCategoryList';
+export { default as Orders } from './Orders';
+export { default as Customers } from './Customers';
+export { default as ColorList } from './ColorList';
+export { default as CategoryList } from './CategoryList';
+export { default as BrandList } from './BrandList';
+export { default as ProductList } from './ProductList';
+export { default as AddBlog  } from './AddBlog';
+export { default as AddBlogCategory } from './AddBlogCategory';
+export { default as AddColor } from './AddColor';
