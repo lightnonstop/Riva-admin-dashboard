@@ -35,7 +35,7 @@ for (let i = 0; i < 46; i++){
 function BlogList(){
 	return (
 		<div>
-			<h3 className='mb-4'>Blog Lists</h3>
+			<h3 className='title  mb-4'>Blog Lists</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>

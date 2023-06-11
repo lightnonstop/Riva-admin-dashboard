@@ -8,7 +8,7 @@ function ResetPassword() {
       <br />
       <br />
       <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
-        <h3 className='text-center fs-5 fw-bolder d-flex flex-column align-items-center gap-3'><RxReset size={40} color='6fdc87' /> Reset Password</h3>
+        <h3 className='title  text-center fs-5 fw-bolder d-flex flex-column align-items-center gap-3'><RxReset size={40} color='6fdc87' /> Reset Password</h3>
         <p className='text-center'>Please Enter your new password</p>
         <form action="">
           <Input type='password' label='New Password' i_id='password' />

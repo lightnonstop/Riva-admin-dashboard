@@ -1,15 +1,14 @@
-import React from 'react'
 import Input from '../components/Input'
 
-function AddColor() {
+function AddBrand() {
   return (
     <div>
-        <h3 className="title mb-4">Add color</h3>
+        <h3 className="title mb-4">Add brand</h3>
         <div>
             <form action="">
-                <Input type='color' label='Enter color' i_id='color' />
+                <Input type='text' label='Enter brand' i_id='brand' />
                 <button className='btn btn-success border-0 rounded-3 my-5' type='submit'>
-                Add color
+                Add brand
                 </button>
             </form>
         </div>
@@ -17,4 +16,4 @@ function AddColor() {
   )
 }
 
-export default AddColor;
+export default AddBrand

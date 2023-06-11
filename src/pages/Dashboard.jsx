@@ -111,7 +111,7 @@ function Dashboard() {
 	};
 	return (
 		<div>
-			<h3 className='mb-4'>Dashboard</h3>
+			<h3 className='title  mb-4'>Dashboard</h3>
 			<div className='d-flex justify-content-between align-items-center gap-3'>
 				<div className='d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3'>
 					<div>
@@ -145,13 +145,13 @@ function Dashboard() {
 				</div>
 			</div>
 			<div className="mt-4">
-				<h3 className='mb-4'>Income Statistics</h3>
+				<h3 className='title  mb-4'>Income Statistics</h3>
 				<div>
 					<Column {...config} />
 				</div>
 			</div>
 			<div className="mt-4">
-				<h3 className="mb-0">
+				<h3 className="title mb-4">
 					Recent Orders
 				</h3>
 				<div>

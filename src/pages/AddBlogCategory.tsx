@@ -4,7 +4,7 @@ import Input from '../components/Input'
 function AddBlogCategory() {
   return (
     <div>
-        <h3 className="mb-4">Add blog category</h3>
+        <h3 className="title mb-4">Add blog category</h3>
         <div>
             <form action="">
                 <Input type='text' label='Enter blog category' i_id='blogCategory' />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Input from '../components/Input'
 import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -34,7 +34,7 @@ function AddBlog() {
   }
   return (
     <div>
-      <h3>Add Blog</h3>
+      <h3 className="title">Add Blog</h3>
 
       <div className=''>
         <form>

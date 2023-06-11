@@ -9,7 +9,7 @@ function Login() {
       <br />
       <br />
       <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
-        <h3 className='text-center fs-5 fw-bolder d-flex flex-column align-items-center gap-3'><RiLoginBoxLine size={40} color='6fdc87' /> Login</h3>
+        <h3 className='title  text-center fs-5 fw-bolder d-flex flex-column align-items-center gap-3'><RiLoginBoxLine size={40} color='6fdc87' /> Login</h3>
         <p className='text-center'>Login to your account to continue</p>
         <form action="">
           <Input type='text' label='Email Address' i_id='email' />

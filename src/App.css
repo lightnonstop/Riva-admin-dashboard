@@ -1,0 +1,26 @@
+:root{
+    --color-212529: #212529;
+    --color-6FDC87: #6FDC87;
+    --color-47AD24: #47AD24;
+    --color-E52E2E: #E52E2E;
+    --color-828599: #828599;
+    --color-3D464D: #3D464D;
+    --color-C3D4DA: #C3D4DA;
+}
+.green{
+  color: var(--color-47AD24);
+}
+.red{
+  color: var(--color-E52E2E);
+}
+.quill{
+	background-color: #FFFFFF;
+}
+.form-control{
+    box-shadow: none;
+    border-color: var(--color-C3D4DA);
+}
+.title{
+    font-size: 28px;
+    font-family: 'Roboto' !important;
+}
