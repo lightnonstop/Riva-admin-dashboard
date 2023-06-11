@@ -4,8 +4,9 @@ type InputProps = {
     i_id: string;
     i_class?: string;
     name?: string;
+    value?: string;
 };
-function Input({ type, label, i_id, i_class, name }: InputProps) {
+function Input({ type, label, i_id, i_class, name, value }: InputProps) {
   return (
     <div className='form-floating mb-3'>
         <input 
@@ -14,6 +15,7 @@ function Input({ type, label, i_id, i_class, name }: InputProps) {
         id={i_id}
         placeholder={label}
         name={name}
+        value={value}
         />
         <label htmlFor="floatingInput">{label}</label>
     </div>
