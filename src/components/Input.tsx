@@ -6,8 +6,9 @@ type InputProps = {
     name?: string;
     value?: string;
     onChange?: any;
+    onBlur?: any;
 };
-function Input({ type, label, i_id, i_class, name, value, onChange }: InputProps) {
+function Input({ type, label, i_id, i_class, name, value, onChange, onBlur }: InputProps) {
   return (
     <div className='form-floating mt-3 mb-2'>
         <input 
@@ -18,6 +19,7 @@ function Input({ type, label, i_id, i_class, name, value, onChange }: InputProps
         name={name}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         />
         <label htmlFor="floatingInput">{label}</label>
     </div>
