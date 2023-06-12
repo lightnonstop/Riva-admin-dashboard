@@ -8,6 +8,7 @@ import colorReducer from '../features/colors/colorSlice';
 import blogReducer from '../features/blogs/blogSlice';
 import blogCategoryReducer from '../features/blogCategories/blogCategorySlice';
 import enquiryReducer from '../features/enquiries/enquirySlice';
+import orderReducer from '../features/orders/orderSlice';
 import { useDispatch } from "react-redux";
 export const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
         blogs: blogReducer,
         blogCategories: blogCategoryReducer,
         enquiries: enquiryReducer,
+        orders: orderReducer,
     },
 });
 export type AppDispatch = typeof store.dispatch

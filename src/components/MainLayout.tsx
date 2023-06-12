@@ -10,7 +10,7 @@ import { HiColorSwatch } from 'react-icons/hi';
 import { IoIosColorPalette } from 'react-icons/io';
 import { ImBlog } from 'react-icons/im';
 import { IoIosNotifications } from 'react-icons/io';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -24,11 +24,11 @@ import { RiFileList3Line } from 'react-icons/ri';
 
 const { Header, Sider, Content } = Layout;
 function MainLayout() {
-    const [collapsed, setCollapsed] = useState(false);
-    const {
-      token: { colorBgContainer },
-    } = theme.useToken();
-    const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+  const navigate = useNavigate();
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -44,7 +44,7 @@ function MainLayout() {
           mode="inline"
           defaultSelectedKeys={['']}
           onClick={({ key }) => {
-            if (key !== 'signout'){
+            if (key !== 'signout') {
               navigate(key.toLowerCase());
             }
           }}
@@ -103,7 +103,7 @@ function MainLayout() {
                   key: 'color-list',
                   icon: <IoIosColorPalette className='fs-4' />,
                   label: 'Color List',
-                },    
+                },
               ]
             },
             {
@@ -142,16 +142,16 @@ function MainLayout() {
               key: 'enquiries',
               icon: <FaQuestionCircle className='fs-4' />,
               label: 'Enquiries',
-            }, 
+            },
           ]}
         />
       </Sider>
       <Layout>
         <Header
-	className="d-flex justify-content-between ps-1 pe-5"
-	style={{ 
-          padding: 0, 
-          background: colorBgContainer,
+          className="d-flex justify-content-between ps-1 pe-5"
+          style={{
+            padding: 0,
+            background: colorBgContainer,
           }}>
           <Button
             type="text"
@@ -163,21 +163,33 @@ function MainLayout() {
               height: 64,
             }}
           />
-	<div className="d-flex gap-3 align-items-center">
-		<div className='position-relative'>
-      <IoIosNotifications className='fs-4' />
-      <span className='badge bg-warning rounded-cicle p-1 position-absolute d-flex align-items-center justify-content-center'>3</span>
-    </div>
-		<div className='d-flex gap-3 align-items-center'>
-			<div>
-				<img width={32} height={32} src='https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg' alt='' />
-			</div>
-			<div>
-				<h5 className='mb-0'>Unwana</h5>
-        <p className='mb-0'>umichaeledet003@gmail.com</p>
-			</div>	
-		</div>	
-	</div>
+          <div className="d-flex gap-3 align-items-center">
+            <div className='position-relative'>
+              <IoIosNotifications className='fs-4' />
+              <span className='badge bg-warning rounded-cicle p-1 position-absolute d-flex align-items-center justify-content-center'>3</span>
+            </div>
+            <div className='d-flex gap-3 align-items-center'>
+              <div>
+                <img width={32} height={32} src='https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg' alt='' />
+              </div>
+              <div
+                role='button'
+                id='dropdownMenuLink'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'>
+                <h5 className='mb-0'>Unwana</h5>
+                <p className='mb-0'>umichaeledet003@gmail.com</p>
+              </div>
+              <div className='dropdown-menu' aria-label='dropdownMenuLink'>
+                <li>
+                  <Link to="#" className='dropdown-item py-1 mb-1' style={{ height: 'auto', lineHeight: '20px' }}>View Profile</Link>
+                </li>
+                <li>
+                  <Link to="#" className='dropdown-item py-1 mb-1' style={{ height: 'auto', lineHeight: '20px' }}>Signout</Link>
+                </li>
+              </div>
+            </div>
+          </div>
         </Header>
         <Content
           style={{
@@ -187,7 +199,7 @@ function MainLayout() {
             background: colorBgContainer,
           }}
         >
-	<Outlet />
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
