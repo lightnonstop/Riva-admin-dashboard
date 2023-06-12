@@ -95,6 +95,13 @@ function Dashboard() {
 		color: ({ }) => {
 			return '#6fdc87';
 		},
+		label: {
+			position: 'middle',
+			style: {
+				fill: '#FFFFFF',
+				opacity: 1,
+			},
+		},
 		xAxis: {
 			label: {
 				autoHide: true,
