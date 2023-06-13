@@ -9,6 +9,7 @@ import blogReducer from '../features/blogs/blogSlice';
 import blogCategoryReducer from '../features/blogCategories/blogCategorySlice';
 import enquiryReducer from '../features/enquiries/enquirySlice';
 import orderReducer from '../features/orders/orderSlice';
+import uploadImagesReducer from '../features/uploads/uploadSlice';
 import { useDispatch } from "react-redux";
 export const store = configureStore({
     reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
         blogCategories: blogCategoryReducer,
         enquiries: enquiryReducer,
         orders: orderReducer,
+        uploads: uploadImagesReducer,
     },
 });
 export type AppDispatch = typeof store.dispatch
