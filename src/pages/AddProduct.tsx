@@ -12,26 +12,59 @@ import { getAllCategories } from "../features/categories/categorySlice";
 import { getAllColors } from "../features/colors/colorSlice";
 import { Multiselect } from "react-widgets/cjs";
 import "react-widgets/styles.css";
+
+interface colorArrProps {
+  _id: string; 
+  color: string;
+}
+interface brandsProps{
+  title: string;
+}
+interface colorsProps{
+  title: string;
+  color: string;
+  _id: string;
+}
+/* All form Validations */
 let schema = yup.object().shape({
   title: yup.string()
     .required('Title is required'),
   description: yup.string().required('Description is required'),
   price: yup.number().required('Price is required'),
+  brand: yup.string().required('Brand is required'),
+  category: yup.string().required('Category is required'),
+  color: yup.array().required('Color is required'),
 })
 
 function AddProduct() {
-  const dispatch = useDispatch<AppDispatch>();
 
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      description: '',
+      price: '',
+      color: [],
+      brand: '',
+      category: '',
+    },
+    validationSchema: schema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
+    }
+  });
+
+  const colorArr: colorArrProps[] = [];
+  const [productColor, setProductColor] = useState<never[]>([]);
+
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getAllBrands());
     dispatch(getAllCategories());
     dispatch(getAllColors());
+    formik.values.color = productColor;
   }, [])
-
+  
   /* Providing product brands data */
-  interface brandsProps{
-		title: string;
-	}
 
   const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
 
@@ -42,14 +75,9 @@ function AddProduct() {
 	const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
 
   /* Providing product colors data */
-  interface colorsProps{
-    title: string;
-		color: string;
-    _id: string;
-	}
+  
 	const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
 
-  const colorArr: { _id: string; color: string }[] = [];
   
   colors.forEach(color => {
     colorArr.push({
@@ -57,19 +85,7 @@ function AddProduct() {
       color: color.title
     })
   })
-console.log(colors);
 
-  const formik = useFormik({
-    initialValues: {
-      title: '',
-      description: '',
-      price: '',
-    },
-    validationSchema: schema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
-    }
-  });
   return (
     <div>
         <h3 className="title mb-4">Add Product</h3>
@@ -100,7 +116,13 @@ console.log(colors);
             <div className="error">
               {formik.touched.price && formik.errors.price}
             </div>
-            <select name="" className='form-control py-3 mb-3' id="">
+            <select 
+            onChange={formik.handleChange('brand')}
+            onBlur={formik.handleChange('brand')}
+            value={formik.values.brand}
+            name="brand" 
+            className='form-control py-3 mb-3' 
+            id="">
               <option value="">Select Brand</option>
               {
                 brands.map((brand, key) => (
@@ -110,7 +132,12 @@ console.log(colors);
                 ))
               }
             </select>
-            <select name="" className='form-control py-3 mb-3' id="">
+            <select
+             onChange={formik.handleChange('category')}
+             onBlur={formik.handleChange('category')}
+             value={formik.values.category}
+             name="category" 
+             className='form-control py-3 mb-3' id="">
               <option value="">Select Category</option>
               {
                 categories.map((category, key) => (
@@ -125,8 +152,11 @@ console.log(colors);
               textField='color'
               data={colorArr}
               placeholder="Select Color"
+              onChange={(e: any) => setProductColor(e)}
              />
-            <Input type="number" label="Enter Product Price" i_id="productPrice" />
+            <Input 
+            type="number" 
+            label="Enter Product Quantity" i_id="productQuantity" />
             <button className="btn btn-success border-0 rounded-3 my-5" type="submit">
               Add Product
             </button>
