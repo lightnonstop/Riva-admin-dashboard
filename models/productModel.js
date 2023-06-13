@@ -39,7 +39,12 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
     images: {
-      type: Array,
+      type: [
+			{
+				public_id: String;
+				url: String;
+			},
+		],
     },
     color: {
       type: String,
