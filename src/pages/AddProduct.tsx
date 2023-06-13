@@ -13,6 +13,7 @@ import { getAllColors } from "../features/colors/colorSlice";
 import { Multiselect } from "react-widgets/cjs";
 import "react-widgets/styles.css";
 import Dropzone from 'react-dropzone';
+import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
 interface colorArrProps {
   _id: string; 
   color: string;
@@ -86,9 +87,18 @@ function AddProduct() {
       color: color.title
     })
   })
+
+  /* Providing product images data */
+  interface imagesProps{
+		url: string;
+    public_url: string;
+	}
+	const images: imagesProps[] = useSelector((state: any) => state.uploads.images)  
+
   useEffect(() => {
     formik.values.color = productColor;    
   }, [productColor])
+    console.log(useSelector(state => state));
   return (
     <div>
         <h3 className="title mb-4">Add Product</h3>
@@ -173,7 +183,7 @@ function AddProduct() {
              </div>
             <Input 
             type="number" label="Enter Product quantity" i_id="productQuantity"
-            onChange={formik.handleChange('Quantity')}
+            onChange={formik.handleChange('quantity')}
             onBlur={formik.handleChange('quantity')}
             value={formik.values.quantity}
              />
@@ -181,7 +191,7 @@ function AddProduct() {
                 {formik.touched.quantity && formik.errors.quantity}
              </div>
              <div className="bg-white border-1 p-5 text-center">
-              <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+              <Dropzone onDrop={(acceptedFiles) => dispatch(getUploadingImages(acceptedFiles))} >
                 {({ getRootProps, getInputProps }) => (
                   <section>
                     <div { ...getRootProps() }>
@@ -191,6 +201,14 @@ function AddProduct() {
                   </section>
                 )}
               </Dropzone>
+             </div>
+             <div className="show-images d-flex border-3">
+                  {images?.map((image, index) => (
+                    <div key={index}className="position-relative">
+                      <button className="btn-close position-absolute" style={{ top: '5px', right: '5px' }} onClick={() => dispatch(getDeletingImages(image.public_url))} />
+                      <img src={image.url} alt="" width={200}height={200} />
+                    </div>
+                  ))}
              </div>
             <button className="btn btn-success border-0 rounded-3 my-5" type="submit">
               Add Product
