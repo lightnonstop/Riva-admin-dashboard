@@ -3,49 +3,32 @@ import { Input } from "../components"
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
+import { Select } from "antd";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
 import { getAllBrands } from "../features/brands/brandSlice";
 import { useSelector } from "react-redux";
 import { getAllCategories } from "../features/categories/categorySlice";
 import { getAllColors } from "../features/colors/colorSlice";
-import { Multiselect } from "react-widgets/cjs";
-import "react-widgets/styles.css";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
+import { createAProduct } from "../features/products/productSlice";
 /* All form Validations */
-let schema = yup.object().shape({
-  title: yup.string()
-    .required('Title is required'),
-  description: yup.string().required('Description is required'),
-  price: yup.number().required('Price is required'),
-  brand: yup.string().required('Brand is required'),
-  category: yup.string().required('Category is required'),
-  color: yup.array().required('Color is required'),
-  quantity: yup.number().required('Quantity is required'),
+let schema = Yup.object().shape({
+  title: Yup.string().required('Title is required'),
+  description: Yup.string().required('Description is required'),
+  price: Yup.number().required('Price is required'),
+  brand: Yup.string().required('Brand is required'),
+  category: Yup.string().required('Category is required'),
+  color: Yup.array().required('Color is required'),
+  image: Yup.array().required('Image is required'),
+  quantity: Yup.number().required('Quantity is required'),
 })
 
 function AddProduct() {
-
-  const formik = useFormik({
-    initialValues: {
-      title: '',
-      description: '',
-      price: '',
-      color: [],
-      brand: '',
-      category: '',
-      quantity: '',
-    },
-    validationSchema: schema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
-    }
-  });
-
-  const colorArr: colorArrProps[] = [];
-  const [productColor, setProductColor] = useState<never[]>([]);
+  /* Product states */
+  const [productColor, setProductColor] = useState<string>('');
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -54,8 +37,30 @@ function AddProduct() {
     dispatch(getAllColors());
   }, [])
   
-  /* Providing product brands data */
 
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      description: '',
+      price: '',
+      color: '',
+      image: [],
+      brand: '',
+      category: '',
+      quantity: '',
+    },
+    validationSchema: schema,
+    onSubmit: (values) => {
+      dispatch(createAProduct(values))
+      console.log(values)
+    }
+  });
+
+
+  /* Providing product brands data */
+  interface brandsProps{
+    title: string;
+  }
   const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
 
   /* Providing product categories data */
@@ -65,44 +70,71 @@ function AddProduct() {
 	const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
 
   /* Providing product colors data */
-  
+
+  interface colorsProps{
+    title: string;
+    color: string;
+    _id: string;
+  } 
 	const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
 
+  interface colorArrProps {
+    label: string; 
+    value: string;
+  }
+  const coloropt: colorArrProps[] = [];
   
   colors.forEach(color => {
-    colorArr.push({
-      _id: color._id,
-      color: color.title
+    coloropt.push({
+      value: color._id,
+      label: color.title
     })
   })
 
   /* Providing product images data */
+
   interface imagesProps{
 		url: string;
-    public_url: string;
+    public_id: string;
 	}
-	const images: imagesProps[] = useSelector((state: any) => state.uploads.images)  
+	const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
+  const imageArr: any= [];
 
+  images.forEach(image => {
+    imageArr.push({
+      public_id: image.public_id,
+      url: image.url
+    })
+  })
+
+  const handleColors = (e: string) => {
+    setProductColor(e);
+    console.log(productColor);
+    
+  }
+  
   useEffect(() => {
-    formik.values.color = productColor;    
-  }, [productColor])
-    console.log(useSelector(state => state));
+    formik.values.color = productColor;
+    formik.values.image = imageArr;    
+  }, [productColor, imageArr])
   return (
     <div>
         <h3 className="title mb-4">Add Product</h3>
         <div className="">
           <form action="" onSubmit={formik.handleSubmit} className="d-flex flex-column gap-3">
-            <Input type="text" label="Enter product title" i_id="productTitle" name="title" onChange={formik.handleChange('title')}
-            onBlur={formik.handleChange('title')}
+            <Input type="text" label="Enter product title" i_id="productTitle" name="title" 
+            onChange={formik.handleChange('title')}
+            onBlur={formik.handleBlur('title')}
             value={formik.values.title}
              />
              <div className="error">
                 {formik.touched.title && formik.errors.title}
              </div>
-            <div onBlur={formik.handleChange('description')}>
+            <div>
               <ReactQuill
                 theme='snow'
                 onChange={formik.handleChange('description')}
+                onBlur={formik.handleBlur('description')}
                 value={formik.values.description}
             />
               <div className="error">
@@ -111,7 +143,7 @@ function AddProduct() {
             </div>
            <Input type="number" label="Enter Product Price" i_id="productPrice"
            onChange={formik.handleChange('price')}
-           onBlur={formik.handleChange('price')}
+           onBlur={formik.handleBlur('price')}
            value={formik.values.price}
             />
             <div className="error">
@@ -119,7 +151,7 @@ function AddProduct() {
             </div>
             <select 
             onChange={formik.handleChange('brand')}
-            onBlur={formik.handleChange('brand')}
+            onBlur={formik.handleBlur('brand')}
             value={formik.values.brand}
             name="brand" 
             className='form-control py-3 mb-3' 
@@ -138,7 +170,7 @@ function AddProduct() {
              </div>
             <select
              onChange={formik.handleChange('category')}
-             onBlur={formik.handleChange('category')}
+             onBlur={formik.handleBlur('category')}
              value={formik.values.category}
              name="category" 
              className='form-control py-3 mb-3' id="">
@@ -154,14 +186,14 @@ function AddProduct() {
             <div className="error">
                 {formik.touched.category && formik.errors.category}
              </div>
-            <Multiselect
-              dataKey='id'
-              textField='color'
-              data={colorArr}
-              placeholder="Select Color"
-              onChange={(e: any) => setProductColor(e)}
-              onBlur={formik.handleChange('color')}
-              value={productColor}
+            <Select
+              mode="multiple"
+              allowClear
+              className="w-100"
+              placeholder='Select colors'
+              defaultValue={productColor}
+              options={coloropt}
+              onChange={handleColors}
              />
              
              <div className="error">
@@ -170,9 +202,11 @@ function AddProduct() {
               
              </div>
             <Input 
-            type="number" label="Enter Product quantity" i_id="productQuantity"
+            type="number" 
+            label="Enter Product quantity" 
+            i_id="productQuantity"
             onChange={formik.handleChange('quantity')}
-            onBlur={formik.handleChange('quantity')}
+           onBlur={formik.handleBlur('quantity')}
             value={formik.values.quantity}
              />
              <div className="error">
@@ -191,7 +225,7 @@ function AddProduct() {
               </Dropzone>
              </div>
              <div className="show-images d-flex border-3">
-                  {images?.map((image, index) => (
+                  {images?.map((image: any, index) => (
                     <div key={index}className="position-relative">
                       <button className="btn-close position-absolute" style={{ top: '5px', right: '5px' }} onClick={() => dispatch(getDeletingImages(image.public_url))} />
                       <img src={image.url} alt="" width={200}height={200} />
