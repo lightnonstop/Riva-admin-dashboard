@@ -12,7 +12,7 @@ import { getAllCategories } from "../features/categories/categorySlice";
 import { getAllColors } from "../features/colors/colorSlice";
 import { Multiselect } from "react-widgets/cjs";
 import "react-widgets/styles.css";
-
+import Dropzone from 'react-dropzone';
 interface colorArrProps {
   _id: string; 
   color: string;
@@ -34,6 +34,7 @@ let schema = yup.object().shape({
   brand: yup.string().required('Brand is required'),
   category: yup.string().required('Category is required'),
   color: yup.array().required('Color is required'),
+  quantity: yup.number().required('Quantity is required'),
 })
 
 function AddProduct() {
@@ -46,6 +47,7 @@ function AddProduct() {
       color: [],
       brand: '',
       category: '',
+      quantity: '',
     },
     validationSchema: schema,
     onSubmit: (values) => {
@@ -61,7 +63,6 @@ function AddProduct() {
     dispatch(getAllBrands());
     dispatch(getAllCategories());
     dispatch(getAllColors());
-    formik.values.color = productColor;
   }, [])
   
   /* Providing product brands data */
@@ -85,7 +86,9 @@ function AddProduct() {
       color: color.title
     })
   })
-
+  useEffect(() => {
+    formik.values.color = productColor;    
+  }, [productColor])
   return (
     <div>
         <h3 className="title mb-4">Add Product</h3>
@@ -132,6 +135,9 @@ function AddProduct() {
                 ))
               }
             </select>
+            <div className="error">
+                {formik.touched.brand && formik.errors.brand}
+             </div>
             <select
              onChange={formik.handleChange('category')}
              onBlur={formik.handleChange('category')}
@@ -147,16 +153,45 @@ function AddProduct() {
                 ))
               }
             </select>
+            <div className="error">
+                {formik.touched.category && formik.errors.category}
+             </div>
             <Multiselect
               dataKey='id'
               textField='color'
               data={colorArr}
               placeholder="Select Color"
               onChange={(e: any) => setProductColor(e)}
+              onBlur={formik.handleChange('color')}
+              value={productColor}
              />
+             
+             <div className="error">
+              
+                {formik.touched.color && formik.errors.color}
+              
+             </div>
             <Input 
-            type="number" 
-            label="Enter Product Quantity" i_id="productQuantity" />
+            type="number" label="Enter Product quantity" i_id="productQuantity"
+            onChange={formik.handleChange('Quantity')}
+            onBlur={formik.handleChange('quantity')}
+            value={formik.values.quantity}
+             />
+             <div className="error">
+                {formik.touched.quantity && formik.errors.quantity}
+             </div>
+             <div className="bg-white border-1 p-5 text-center">
+              <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div { ...getRootProps() }>
+                      <input { ...getInputProps() } />
+                      <p>Drag 'n' drop some files here, or click to select files</p>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+             </div>
             <button className="btn btn-success border-0 rounded-3 my-5" type="submit">
               Add Product
             </button>
