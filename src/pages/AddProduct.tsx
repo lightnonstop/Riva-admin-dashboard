@@ -14,18 +14,6 @@ import { Multiselect } from "react-widgets/cjs";
 import "react-widgets/styles.css";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
-interface colorArrProps {
-  _id: string; 
-  color: string;
-}
-interface brandsProps{
-  title: string;
-}
-interface colorsProps{
-  title: string;
-  color: string;
-  _id: string;
-}
 /* All form Validations */
 let schema = yup.object().shape({
   title: yup.string()
