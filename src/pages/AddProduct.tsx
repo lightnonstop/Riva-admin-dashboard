@@ -124,10 +124,8 @@ console.log(colors);
               dataKey='id'
               textField='color'
               data={colorArr}
+              placeholder="Select Color"
              />
-            {/* <select name="" className='form-control py-3 mb-3' id="">
-              <option value="">Select Color</option>
-            </select> */}
             <Input type="number" label="Enter Product Price" i_id="productPrice" />
             <button className="btn btn-success border-0 rounded-3 my-5" type="submit">
               Add Product
