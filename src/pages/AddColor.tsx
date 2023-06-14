@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
-import { createAColor } from '../features/colors/colorSlice';
+import { createAColor, resetColorState } from '../features/colors/colorSlice';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
 })
@@ -43,7 +43,8 @@ function AddColor() {
       
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/colors')
+        dispatch(resetColorState())
+        //navigate('/admin/colors')
       }, 3000)
     }
   });

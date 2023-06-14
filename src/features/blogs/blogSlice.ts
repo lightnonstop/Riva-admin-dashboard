@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import blogService from "./blogService";
 
 
@@ -17,10 +17,17 @@ export const createABlog = createAsyncThunk('blog/create-blogs', async (blogData
         return thunkAPI.rejectWithValue(e);
     }
 })
-
-const initialState = {
+export const resetBlogState = createAction('Reset_all');
+type initialStateProps = {
     blogs: [],
-    createdBlog: [],
+    isError: boolean,
+    isLoading: boolean,
+    isSuccess: boolean,
+    message: string;
+    createdBlog?: {}[];
+}
+const initialState: initialStateProps = {
+    blogs: [],
     isError: false,
     isLoading: false,
     isSuccess: false,
@@ -70,6 +77,7 @@ export const blogSlice = createSlice({
                 state.createdBlog = null!,
                 state.message = action.error.message!
             })
+            .addCase(resetBlogState, () => initialState)
     },
 })
 

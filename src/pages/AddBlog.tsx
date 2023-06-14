@@ -12,7 +12,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useSelector } from 'react-redux';
 import { getAllBlogCategories } from '../features/blogCategories/blogCategorySlice';
-import { createABlog } from '../features/blogs/blogSlice';
+import { createABlog, resetBlogState } from '../features/blogs/blogSlice';
 
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -71,7 +71,8 @@ function AddBlog() {
       
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/blogs')
+        dispatch(resetBlogState())
+        //navigate('/admin/blogs')
       }, 3000)
     }
   });

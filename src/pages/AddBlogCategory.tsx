@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
-import { createABlogCategory } from '../features/blogCategories/blogCategorySlice';
+import { createABlogCategory, resetBlogCategoryState } from '../features/blogCategories/blogCategorySlice';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
 })
@@ -38,10 +38,9 @@ function AddBlogCategory() {
     validationSchema: schema,
     onSubmit: (values) => {
       dispatch(createABlogCategory(values))
-      
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/blog-categories')
+        dispatch(resetBlogCategoryState())  
       }, 3000)
     }
   });

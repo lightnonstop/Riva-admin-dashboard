@@ -14,7 +14,7 @@ import { getAllProductCategories } from "../features/productCategories/productCa
 import { getAllColors } from "../features/colors/colorSlice";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
-import { createAProduct } from "../features/products/productSlice";
+import { createAProduct, resetProductState } from "../features/products/productSlice";
 import { useNavigate } from "react-router-dom";
 /* All form Validations */
 let schema = Yup.object().shape({
@@ -31,7 +31,7 @@ let schema = Yup.object().shape({
 
 function AddProduct() {
   /* Products states */
-  const [productColor, setProductColor] = useState<[]>([]);
+  const [productColor, setProductColor] = useState<any>([]);
   const navigate = useNavigate();
 
   interface brandsProps{
@@ -99,7 +99,8 @@ function AddProduct() {
       formik.resetForm();
       setProductColor([]);
       setTimeout(() => {
-        navigate('/admin/products')
+        dispatch(resetProductState());
+        //navigate('/admin/products')
       }, 3000)
     }
   });

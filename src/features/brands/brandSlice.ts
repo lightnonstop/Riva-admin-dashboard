@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import brandService from "./brandService";
 
 
@@ -17,10 +17,18 @@ export const createABrand = createAsyncThunk('brand/create-brands', async (brand
         return thunkAPI.rejectWithValue(e);
     }
 })
+export const resetBrandState = createAction('Reset_all');
 
-const initialState = {
+type initialStateProps = {
     brands: [],
-    createdBrand: [],
+    isError: boolean,
+    isLoading: boolean,
+    isSuccess: boolean,
+    message: string;
+    createdBrand?: [];
+}
+const initialState: initialStateProps = {
+    brands: [],
     isError: false,
     isLoading: false,
     isSuccess: false,
@@ -70,6 +78,7 @@ export const brandSlice = createSlice({
                 state.createdBrand = null!,
                 state.message = action.error.message!
             })
+            .addCase(resetBrandState, () => initialState)
     },
 })
 

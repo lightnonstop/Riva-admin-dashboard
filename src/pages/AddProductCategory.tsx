@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
-import { createAProductCategory } from '../features/productCategories/productCategorySlice';
+import { createAProductCategory, resetProductCategoryState } from '../features/productCategories/productCategorySlice';
 import { useEffect } from 'react';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
@@ -39,11 +39,11 @@ function AddProductCategory() {
     validationSchema: schema,
     onSubmit: (values) => {
       dispatch(createAProductCategory(values))
-      // console.log(values);
       
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/product-categories')
+        dispatch(resetProductCategoryState())
+        //navigate('/admin/product-categories')
       }, 3000)
     }
   });
