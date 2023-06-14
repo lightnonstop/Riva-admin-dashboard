@@ -69,7 +69,7 @@ function MainLayout() {
                 {
                   key: 'add-product',
                   icon: <TbBrandProducthunt className='fs-4' />,
-                  label: 'Add a Products',
+                  label: 'Add a product',
                 },
                 {
                   key: 'products',
@@ -79,7 +79,7 @@ function MainLayout() {
                 {
                   key: 'add-brand',
                   icon: <SiBrandfolder className='fs-4' />,
-                  label: 'Add a Brand',
+                  label: 'Add a brand',
                 },
                 {
                   key: 'brands',
@@ -89,17 +89,17 @@ function MainLayout() {
                 {
                   key: 'add-product-category',
                   icon: <BiCategory className='fs-4' />,
-                  label: 'Add a Products Category',
+                  label: 'Add a product category',
                 },
                 {
                   key: 'product-categories',
                   icon: <CiBoxList className='fs-4' />,
-                  label: 'Products Categories',
+                  label: 'Product categories',
                 },
                 {
                   key: 'add-color',
                   icon: <HiColorSwatch className='fs-4' />,
-                  label: 'Add a Color',
+                  label: 'Add a color',
                 },
                 {
                   key: 'colors',
@@ -121,7 +121,7 @@ function MainLayout() {
                 {
                   key: 'add-blog',
                   icon: <ImBlog className='fs-4' />,
-                  label: 'Add a Blog',
+                  label: 'Add a blog',
                 },
                 {
                   key: 'blogs',
@@ -131,12 +131,12 @@ function MainLayout() {
                 {
                   key: 'add-blog-category',
                   icon: <BiCategory className='fs-4' />,
-                  label: 'Add a Blog Category',
+                  label: 'Add a blog category',
                 },
                 {
                   key: 'blog-categories',
                   icon: <FaBloggerB className='fs-4' />,
-                  label: 'Blog Categories',
+                  label: 'Blog categories',
                 },
               ]
             },
