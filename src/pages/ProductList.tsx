@@ -72,7 +72,7 @@ function ProductList(){
 		price: string;
 		brand: string;
 		category: string;
-		color: string;
+		color: string[];
 	}
 	const products: productsProps[] = useSelector((state: any) => state.products.products)
 	
@@ -85,7 +85,7 @@ function ProductList(){
 				quantity: products[i].quantity,
 				brand: products[i].brand,
 				category: products[i].category,
-				color: products[i].color,
+				color: products[i].color[0],
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
