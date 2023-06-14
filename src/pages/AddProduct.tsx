@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Input } from "../components"
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -21,14 +21,14 @@ let schema = Yup.object().shape({
   price: Yup.number().required('Price is required'),
   brand: Yup.string().required('Brand is required'),
   category: Yup.string().required('Category is required'),
-  color: Yup.array().required('Color is required'),
+  color: Yup.array().min(1, "Pick at least one color").required('Color is required'),
   image: Yup.array().required('Image is required'),
   quantity: Yup.number().required('Quantity is required'),
 })
 
 function AddProduct() {
   /* Product states */
-  const [productColor, setProductColor] = useState<string>('');
+  const [productColor, setProductColor] = useState<[]>([]);
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -51,8 +51,8 @@ function AddProduct() {
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      dispatch(createAProduct(values))
-      console.log(values)
+      // dispatch(createAProduct(values))
+      alert(JSON.stringify(values));
     }
   });
 
@@ -107,14 +107,13 @@ function AddProduct() {
     })
   })
 
-  const handleColors = (e: string) => {
-    setProductColor(e);
+  const handleColors = useCallback((e: []) => {
+    setProductColor(e)
     console.log(productColor);
-    
-  }
+  }, [productColor])
   
   useEffect(() => {
-    formik.values.color = productColor;
+    formik.values.color = productColor ? productColor : '';
     formik.values.image = imageArr;    
   }, [productColor, imageArr])
   return (
