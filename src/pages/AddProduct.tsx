@@ -21,6 +21,7 @@ let schema = Yup.object().shape({
   price: Yup.number().required('Price is required'),
   brand: Yup.string().required('Brand is required'),
   category: Yup.string().required('Category is required'),
+  tag: Yup.string().required('Tag is required'),
   color: Yup.array().min(1, "Pick at least one color").required('Color is required'),
   image: Yup.array().required('Image is required'),
   quantity: Yup.number().required('Quantity is required'),
@@ -48,6 +49,7 @@ function AddProduct() {
       brand: '',
       category: '',
       quantity: '',
+      tag: '',
     },
     validationSchema: schema,
     onSubmit: (values) => {
@@ -184,6 +186,21 @@ function AddProduct() {
             </select>
             <div className="error">
                 {formik.touched.category && formik.errors.category}
+             </div>
+            <select
+             onChange={formik.handleChange('tag')}
+             onBlur={formik.handleBlur('tag')}
+             value={formik.values.tag}
+             name="tag" 
+             className='form-control py-3 mb-3' id="">
+              <option value="" disabled selected>Select Category</option>
+              <option value="featured">Featured</option>
+              <option value="popular">Popular</option>
+              <option value="special">Special</option>
+            </select>
+
+            <div className="error">
+                {formik.touched.tag && formik.errors.tag}
              </div>
             <Select
               mode="multiple"
