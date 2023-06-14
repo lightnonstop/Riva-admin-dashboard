@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { Select } from "antd";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 import { getAllBrands } from "../features/brands/brandSlice";
 import { useSelector } from "react-redux";
 import { getAllCategories } from "../features/categories/categorySlice";
@@ -14,6 +15,7 @@ import { getAllColors } from "../features/colors/colorSlice";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
 import { createAProduct } from "../features/products/productSlice";
+import { useNavigate } from "react-router-dom";
 /* All form Validations */
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -30,7 +32,46 @@ let schema = Yup.object().shape({
 function AddProduct() {
   /* Product states */
   const [productColor, setProductColor] = useState<[]>([]);
+  const navigate = useNavigate();
 
+  interface brandsProps{
+    title: string;
+  }
+	interface categoriesProps{
+		title: string;
+	}
+  interface colorsProps{
+    title: string;
+    color: string;
+    _id: string;
+  }
+
+  interface imagesProps{
+		url: string;
+    public_id: string;
+	}
+  interface newProductProps{
+		isSuccess : string;
+    isError : string;
+    isLoading : string;
+    createdProduct : string;
+	}
+
+  const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
+  const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
+  const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
+  const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
+  const newProduct: newProductProps = useSelector((state: any) => state.products)
+
+  const { isSuccess, isError, isLoading, createdProduct } = newProduct;
+  useEffect(() => {
+    if (isSuccess && createdProduct){
+      toast.success('Your product has been added successfully!');
+    }
+    if (isError){
+      toast.success('Something went wrong!');
+    }
+  }, [isSuccess, isError, isLoading,])
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getAllBrands());
@@ -53,33 +94,19 @@ function AddProduct() {
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      // dispatch(createAProduct(values))
-      alert(JSON.stringify(values));
+      dispatch(createAProduct(values))
+      formik.resetForm();
+      setProductColor([]);
+      setTimeout(() => {
+        navigate('/admin/product-list')
+      }, 3000)
     }
   });
 
 
   /* Providing product brands data */
-  interface brandsProps{
-    title: string;
-  }
-  const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
-
-  /* Providing product categories data */
-	interface categoriesProps{
-		title: string;
-	}
-	const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
-
-  /* Providing product colors data */
-
-  interface colorsProps{
-    title: string;
-    color: string;
-    _id: string;
-  } 
-	const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
-
+   
+	
   interface colorArrProps {
     label: string; 
     value: string;
@@ -95,11 +122,8 @@ function AddProduct() {
 
   /* Providing product images data */
 
-  interface imagesProps{
-		url: string;
-    public_id: string;
-	}
-	const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
+ 
+	
   const imageArr: any= [];
 
   images.forEach(image => {
@@ -111,7 +135,6 @@ function AddProduct() {
 
   const handleColors = useCallback((e: []) => {
     setProductColor(e)
-    console.log(productColor);
   }, [productColor])
   
   useEffect(() => {
@@ -159,7 +182,7 @@ function AddProduct() {
             id="">
               <option value="">Select Brand</option>
               {
-                brands.map((brand, key) => (
+                brands?.map((brand, key) => (
                   <option key={key} value={brand.title}>
                     {brand.title}
                   </option>
@@ -193,7 +216,7 @@ function AddProduct() {
              value={formik.values.tag}
              name="tag" 
              className='form-control py-3 mb-3' id="">
-              <option value="" disabled selected>Select Category</option>
+              <option value="" disabled>Select Category</option>
               <option value="featured">Featured</option>
               <option value="popular">Popular</option>
               <option value="special">Special</option>
