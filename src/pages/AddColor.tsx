@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+
 import { useEffect } from 'react';
 import { createAColor, resetColorState } from '../features/colors/colorSlice';
 let schema = Yup.object().shape({
@@ -14,7 +14,7 @@ let schema = Yup.object().shape({
 function AddColor() {
 
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+ 
 
   interface newColorProps{
 		isSuccess : string;
