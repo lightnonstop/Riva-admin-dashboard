@@ -38,7 +38,6 @@ function BlogCategoryList(){
 		title: string;
 	}
 	const blogCategories: blogCategoriesProps[] = useSelector((state: any) => state.blogCategories.blogCategories)
-	console.log(blogCategories);
 	
 	const data1: DataType[] = [];
 	for (let i = 0; i < blogCategories.length; i++){

@@ -21,7 +21,7 @@ function AddBrand() {
     isLoading : string;
     createdBrand : string;
 	}
-  const newBrand: newBrandProps = useSelector((state: any) => state.products)
+  const newBrand: newBrandProps = useSelector((state: any) => state.brands)
   const { isSuccess, isError, isLoading, createdBrand } = newBrand;
   useEffect(() => {
     if (isSuccess && createdBrand){
@@ -49,7 +49,7 @@ function AddBrand() {
         <h3 className="title mb-4">Add brand</h3>
         <div>
             <form action="" onSubmit={formik.handleSubmit}>
-            <Input type="text" label="Enter product title" i_id="productTitle" name="title" 
+            <Input type="text" label="Enter brand title" i_id="brandTitle" name="title" 
             onChange={formik.handleChange('title')}
             onBlur={formik.handleBlur('title')}
             value={formik.values.title}

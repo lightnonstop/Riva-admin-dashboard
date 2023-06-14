@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { getAllBrands } from "../features/brands/brandSlice";
 import { useSelector } from "react-redux";
-import { getAllCategories } from "../features/categories/categorySlice";
+import { getAllProductCategories } from "../features/categories/categorySlice";
 import { getAllColors } from "../features/colors/colorSlice";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
@@ -75,7 +75,7 @@ function AddProduct() {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getAllBrands());
-    dispatch(getAllCategories());
+    dispatch(getAllProductCategories());
     dispatch(getAllColors());
   }, [])
   

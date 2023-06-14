@@ -1,10 +1,22 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, isPending } from "@reduxjs/toolkit";
 import uploadService from "./uploadService";
 
-
-export const getUploadingImages = createAsyncThunk('upload/images', async (data, thunkAPI) => {
+type T = File;
+export const getUploadingImages = createAsyncThunk('upload/images', async (data: T[], thunkAPI) => {
     try {
-        return await uploadService.uploadImages(data);
+        const formData = new FormData();
+        for (let i = 0; i < data.length; i++){
+            formData.append('images', data[i]);
+        }
+        return await uploadService.uploadImages(formData);
+    } catch (e){
+        return thunkAPI.rejectWithValue(e);
+    }
+})
+
+export const getDeletingImages = createAsyncThunk('delete/images', async (id: string, thunkAPI) => {
+    try {
+        return await uploadService.deleteImages(id);
     } catch (e){
         return thunkAPI.rejectWithValue(e);
     }
@@ -36,6 +48,25 @@ export const uploadSlice = createSlice({
             })
 
             .addCase(getUploadingImages.rejected, (state, action) => {
+                state.isLoading = false,
+                state.isError = true,
+                state.isSuccess = false,
+                state.images = null!,
+                state.message = action.error.message!
+            })
+
+            .addCase(getDeletingImages.pending, (state) => {
+                state.isLoading = true
+            })
+
+            .addCase(getDeletingImages.fulfilled, (state, action) => {
+                state.isLoading = false,
+                state.isError = false,
+                state.isSuccess = true,
+                state.images = [];
+            })
+
+            .addCase(getDeletingImages.rejected, (state, action) => {
                 state.isLoading = false,
                 state.isError = true,
                 state.isSuccess = false,

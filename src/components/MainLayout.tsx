@@ -6,6 +6,8 @@ import { BiCategory } from 'react-icons/bi';
 import { CiBoxList } from 'react-icons/ci';
 import { BsViewList } from 'react-icons/bs';
 import { TbBrandProducthunt } from 'react-icons/tb';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { HiColorSwatch } from 'react-icons/hi';
 import { IoIosColorPalette } from 'react-icons/io';
 import { ImBlog } from 'react-icons/im';
@@ -199,6 +201,17 @@ function MainLayout() {
             background: colorBgContainer,
           }}
         >
+          <ToastContainer
+          position='top-right'
+          autoClose={250}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme='light'
+           />
           <Outlet />
         </Content>
       </Layout>

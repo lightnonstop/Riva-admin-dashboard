@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../utils/base_url";
+import { config } from "../auth/authService";
 
 
 const getProducts = async () => {
@@ -8,9 +9,15 @@ const getProducts = async () => {
     return response.data;
 };
 
+const createProducts = async (product: {}) => {
+    const response = await axios.post(`${baseUrl}product/`, product, config);
+    
+    return response.data;
+};
 
 const productService = {
     getProducts,
+    createProducts,
 };
 
 export default productService;

@@ -7,7 +7,7 @@ function AddBlogCategory() {
         <h3 className="title mb-4">Add blog category</h3>
         <div>
             <form action="">
-                <Input type='text' label='Enter blog category' i_id='blogCategory' />
+                <Input type='text' label='Enter blog category' i_id='category' />
                 <button className='btn btn-success border-0 rounded-3 my-5' type='submit'>
                 Add blog category
                 </button>

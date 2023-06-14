@@ -4,7 +4,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { AppDispatch } from '../app/store';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllCategories } from '../features/categories/categorySlice';
+import { getAllProductCategories } from '../features/categories/categorySlice';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom';
@@ -33,7 +33,7 @@ function CategoryList(){
 
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		dispatch(getAllCategories());
+		dispatch(getAllProductCategories());
 		
 	}, [])
 	interface categoriesProps{
