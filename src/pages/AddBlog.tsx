@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Input from '../components/Input'
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
