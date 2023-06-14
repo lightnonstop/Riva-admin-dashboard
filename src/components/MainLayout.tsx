@@ -114,7 +114,7 @@ function MainLayout() {
               label: 'Order',
             },
             {
-              key: 'blogs',
+              key: 'blog',
               icon: <FaBloggerB className='fs-4' />,
               label: 'Blog',
               children: [
