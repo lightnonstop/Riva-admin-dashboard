@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddBlog, AddBlogCategory, AddColor, BlogCategoryList, BlogList, BrandList, CategoryList, ColorList, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, ProductList, ResetPassword } from './pages';
