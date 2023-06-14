@@ -60,7 +60,7 @@ const columns : ColumnsType<DataType> = [
 		dataIndex: 'action',
 	},
 ];
-function ProductList(){
+function Products(){
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
 		dispatch(getAllProducts());
@@ -100,7 +100,7 @@ function ProductList(){
 	}
 	return (
 		<div>
-			<h3 className='title  mb-4'>Product List</h3>
+			<h3 className='title  mb-4'>Products List</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>
@@ -108,4 +108,4 @@ function ProductList(){
 	)
 }
 
-export default ProductList;
+export default Products;

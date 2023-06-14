@@ -30,7 +30,7 @@ let schema = Yup.object().shape({
 })
 
 function AddProduct() {
-  /* Product states */
+  /* Products states */
   const [productColor, setProductColor] = useState<[]>([]);
   const navigate = useNavigate();
 
@@ -143,7 +143,7 @@ function AddProduct() {
   }, [productColor, imageArr])
   return (
     <div>
-        <h3 className="title mb-4">Add Product</h3>
+        <h3 className="title mb-4">Add Products</h3>
         <div className="">
           <form action="" onSubmit={formik.handleSubmit} className="d-flex flex-column gap-3">
             <Input type="text" label="Enter product title" i_id="productTitle" name="title" 
@@ -165,7 +165,7 @@ function AddProduct() {
                   {formik.touched.description && formik.errors.description}
                 </div>
             </div>
-           <Input type="number" label="Enter Product Price" i_id="productPrice"
+           <Input type="number" label="Enter Products Price" i_id="productPrice"
            onChange={formik.handleChange('price')}
            onBlur={formik.handleBlur('price')}
            value={formik.values.price}
@@ -242,7 +242,7 @@ function AddProduct() {
              </div>
             <Input 
             type="number" 
-            label="Enter Product quantity" 
+            label="Enter Products quantity" 
             i_id="productQuantity"
             onChange={formik.handleChange('quantity')}
            onBlur={formik.handleBlur('quantity')}
@@ -272,7 +272,7 @@ function AddProduct() {
                   ))}
              </div>
             <button className="btn btn-success border-0 rounded-3 my-5" type="submit">
-              Add Product
+              Add Products
             </button>
           </form>
         </div>

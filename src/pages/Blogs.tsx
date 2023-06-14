@@ -1,19 +1,20 @@
 import { Table } from 'antd';
-import { BiEdit } from 'react-icons/bi';
-import { AiFillDelete } from 'react-icons/ai';
 import { AppDispatch } from '../app/store';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllProductCategories } from '../features/productCategories/productCategorySlice';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
+import { getAllBlogs } from '../features/blogs/blogSlice';
 import { Link } from 'react-router-dom';
+import { BiEdit } from 'react-icons/bi';
+import { AiFillDelete } from 'react-icons/ai';
 interface DataType{
 	key: number;
 	name: string;
+	category: string;
 	action: React.ReactElement;
 }
-const columns : ColumnsType<DataType> = [
+const columns: ColumnsType<DataType> = [
 	{
 		title: 'S/N',
 		dataIndex: 'key',
@@ -21,31 +22,36 @@ const columns : ColumnsType<DataType> = [
 	{
 		title: 'Name',
 		dataIndex: 'name',
-		defaultSortOrder: 'descend',
-    	sorter: (a, b) => a.name.length - b.name.length,
+		sorter: (a, b) => a.name.length - b.name.length,
+	},
+	{
+		title: 'Category',
+		dataIndex: 'category',
+		sorter: (a, b) => a.name.length - b.name.length,
 	},
 	{
 		title: 'Action',
 		dataIndex: 'action',
 	},
 ];
-function CategoryList(){
-
+function Blogs(){
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		dispatch(getAllProductCategories());
+		dispatch(getAllBlogs());
 		
 	}, [])
-	interface categoriesProps{
+	interface blogsProps{
 		title: string;
+		category: string;
 	}
-	const productCategories: categoriesProps[] = useSelector((state: any) => state.productCategories.productCategories)
+	const blogs: blogsProps[] = useSelector((state: any) => state.blogs.blogs)
 	
 	const data1: DataType[] = [];
-	for (let i = 0; i < productCategories.length; i++){
+	for (let i = 0; i < blogs.length; i++){
 			data1.push({
 				key: i + 1,
-				name: `${productCategories[i].title}`,
+				name: `${blogs[i].title}`,
+				category: `${blogs[i].category}`,
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
@@ -58,9 +64,10 @@ function CategoryList(){
 				),
 			});
 	}
+	
 	return (
 		<div>
-			<h3 className='title  mb-4'>Product Categories</h3>
+			<h3 className='title  mb-4'>Blog Lists</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>
@@ -68,4 +75,4 @@ function CategoryList(){
 	)
 }
 
-export default CategoryList;
+export default Blogs;

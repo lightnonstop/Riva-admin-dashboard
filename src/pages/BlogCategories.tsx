@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
-import { getAllColors } from '../features/colors/colorSlice';
+import { getAllBlogCategories } from '../features/blogCategories/blogCategorySlice';
 import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { AiFillDelete } from 'react-icons/ai';
@@ -28,23 +28,22 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'action',
 	},
 ];
-
-function ColorList(){
+function BlogCategories(){
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		dispatch(getAllColors());
+		dispatch(getAllBlogCategories());
 		
 	}, [])
-	interface colorsProps{
+	interface blogCategoriesProps{
 		title: string;
 	}
-	const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
+	const blogCategories: blogCategoriesProps[] = useSelector((state: any) => state.blogCategories.blogCategories)
 	
 	const data1: DataType[] = [];
-	for (let i = 0; i < colors.length; i++){
+	for (let i = 0; i < blogCategories.length; i++){
 			data1.push({
 				key: i + 1,
-				name: `${colors[i].title}`,
+				name: `${blogCategories[i].title}`,
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
@@ -59,7 +58,7 @@ function ColorList(){
 	}
 	return (
 		<div>
-			<h3 className='title  mb-4'>Color List</h3>
+			<h3 className='title  mb-4'>Blog Category List</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>
@@ -67,4 +66,4 @@ function ColorList(){
 	)
 }
 
-export default ColorList;
+export default BlogCategories;

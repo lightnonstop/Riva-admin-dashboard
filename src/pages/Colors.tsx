@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
-import { getAllBrands } from '../features/brands/brandSlice';
+import { getAllColors } from '../features/colors/colorSlice';
 import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { AiFillDelete } from 'react-icons/ai';
@@ -28,22 +28,23 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'action',
 	},
 ];
-function BrandList(){
+
+function Colors(){
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		dispatch(getAllBrands());
+		dispatch(getAllColors());
 		
 	}, [])
-	interface brandsProps{
+	interface colorsProps{
 		title: string;
 	}
-	const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
+	const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
 	
 	const data1: DataType[] = [];
-	for (let i = 0; i < brands.length; i++){
+	for (let i = 0; i < colors.length; i++){
 			data1.push({
 				key: i + 1,
-				name: `${brands[i].title}`,
+				name: `${colors[i].title}`,
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
@@ -58,7 +59,7 @@ function BrandList(){
 	}
 	return (
 		<div>
-			<h3 className='title  mb-4'>Brand List</h3>
+			<h3 className='title  mb-4'>Color List</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>
@@ -66,4 +67,4 @@ function BrandList(){
 	)
 }
 
-export default BrandList;
+export default Colors;

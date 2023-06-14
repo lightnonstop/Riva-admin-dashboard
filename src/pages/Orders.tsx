@@ -27,7 +27,7 @@ const columns: ColumnsType<DataType> = [
 		sorter: (a, b) => a.name.length - b.name.length,
 	},
 	{
-		title: 'Product',
+		title: 'Products',
 		dataIndex: 'product',
 	},
 	{

@@ -67,42 +67,42 @@ function MainLayout() {
               label: 'Catalog',
               children: [
                 {
-                  key: 'product',
+                  key: 'add-product',
                   icon: <TbBrandProducthunt className='fs-4' />,
-                  label: 'Add a Product',
+                  label: 'Add a Products',
                 },
                 {
-                  key: 'product-list',
+                  key: 'products',
                   icon: <RiFileList3Line className='fs-4' />,
                   label: 'Products',
                 },
                 {
-                  key: 'brand',
+                  key: 'add-brand',
                   icon: <SiBrandfolder className='fs-4' />,
                   label: 'Add a Brand',
                 },
                 {
-                  key: 'brand-list',
+                  key: 'brands',
                   icon: <BsViewList className='fs-4' />,
                   label: 'Brands',
                 },
                 {
-                  key: 'category',
+                  key: 'add-product-category',
                   icon: <BiCategory className='fs-4' />,
-                  label: 'Add a Product Category',
+                  label: 'Add a Products Category',
                 },
                 {
-                  key: 'category-list',
+                  key: 'product-categories',
                   icon: <CiBoxList className='fs-4' />,
-                  label: 'Product Categories',
+                  label: 'Products Categories',
                 },
                 {
-                  key: 'color',
+                  key: 'add-color',
                   icon: <HiColorSwatch className='fs-4' />,
                   label: 'Add a Color',
                 },
                 {
-                  key: 'color-list',
+                  key: 'colors',
                   icon: <IoIosColorPalette className='fs-4' />,
                   label: 'Colors',
                 },
@@ -119,22 +119,22 @@ function MainLayout() {
               label: 'Blog',
               children: [
                 {
-                  key: 'blog',
+                  key: 'add-blog',
                   icon: <ImBlog className='fs-4' />,
                   label: 'Add a Blog',
                 },
                 {
-                  key: 'blog-list',
+                  key: 'blogs',
                   icon: <FaBloggerB className='fs-4' />,
                   label: 'Blogs',
                 },
                 {
-                  key: 'blog-category',
+                  key: 'add-blog-category',
                   icon: <BiCategory className='fs-4' />,
                   label: 'Add a Blog Category',
                 },
                 {
-                  key: 'blog-category-list',
+                  key: 'blog-categories',
                   icon: <FaBloggerB className='fs-4' />,
                   label: 'Blog Categories',
                 },

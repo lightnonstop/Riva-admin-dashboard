@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
 })
-function AddCategory() {
+function AddProductCategory() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -69,4 +69,4 @@ function AddCategory() {
   )
 }
 
-export default AddCategory
+export default AddProductCategory

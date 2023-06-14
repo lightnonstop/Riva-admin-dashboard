@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
-import { getAllBlogCategories } from '../features/blogCategories/blogCategorySlice';
+import { getAllBrands } from '../features/brands/brandSlice';
 import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { AiFillDelete } from 'react-icons/ai';
@@ -28,22 +28,22 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'action',
 	},
 ];
-function BlogCategoryList(){
+function Brands(){
 	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		dispatch(getAllBlogCategories());
+		dispatch(getAllBrands());
 		
 	}, [])
-	interface blogCategoriesProps{
+	interface brandsProps{
 		title: string;
 	}
-	const blogCategories: blogCategoriesProps[] = useSelector((state: any) => state.blogCategories.blogCategories)
+	const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
 	
 	const data1: DataType[] = [];
-	for (let i = 0; i < blogCategories.length; i++){
+	for (let i = 0; i < brands.length; i++){
 			data1.push({
 				key: i + 1,
-				name: `${blogCategories[i].title}`,
+				name: `${brands[i].title}`,
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
@@ -58,7 +58,7 @@ function BlogCategoryList(){
 	}
 	return (
 		<div>
-			<h3 className='title  mb-4'>Blog Category List</h3>
+			<h3 className='title  mb-4'>Brand List</h3>
 			<div>
 				<Table columns={columns} dataSource={data1} />
 			</div>
@@ -66,4 +66,4 @@ function BlogCategoryList(){
 	)
 }
 
-export default BlogCategoryList;
+export default Brands;

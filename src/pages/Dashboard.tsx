@@ -20,7 +20,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'name',
 	},
 	{
-		title: 'Product',
+		title: 'Products',
 		dataIndex: 'product',
 	},
 	{
