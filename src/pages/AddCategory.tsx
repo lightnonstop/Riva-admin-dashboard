@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from "react-router-dom";
-import { createAProductCategory } from '../features/categories/categorySlice';
+import { createAProductCategory } from '../features/productCategories/productCategorySlice';
 import { useEffect } from 'react';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
@@ -19,13 +19,13 @@ function AddCategory() {
 		isSuccess : string;
     isError : string;
     isLoading : string;
-    createdCategory : string;
+    createdProductCategory : string;
 	}
 
-  const newCategory: newCategoryProps = useSelector((state: any) => state.categories)
-  const { isSuccess, isError, isLoading, createdCategory } = newCategory;
+  const newCategory: newCategoryProps = useSelector((state: any) => state.productCategories)
+  const { isSuccess, isError, isLoading, createdProductCategory } = newCategory;
   useEffect(() => {
-    if (isSuccess && createdCategory){
+    if (isSuccess && createdProductCategory){
       toast.success('Your category has been created successfully!');
     }
     if (isError){

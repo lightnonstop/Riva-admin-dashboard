@@ -69,81 +69,81 @@ function MainLayout() {
                 {
                   key: 'product',
                   icon: <TbBrandProducthunt className='fs-4' />,
-                  label: 'Add Product',
+                  label: 'Add a Product',
                 },
                 {
                   key: 'product-list',
                   icon: <RiFileList3Line className='fs-4' />,
-                  label: 'Product List',
+                  label: 'Products',
                 },
                 {
                   key: 'brand',
                   icon: <SiBrandfolder className='fs-4' />,
-                  label: 'Brand',
+                  label: 'Add a Brand',
                 },
                 {
                   key: 'brand-list',
                   icon: <BsViewList className='fs-4' />,
-                  label: 'Brand List',
+                  label: 'Brands',
                 },
                 {
                   key: 'category',
                   icon: <BiCategory className='fs-4' />,
-                  label: 'Category',
+                  label: 'Add a Product Category',
                 },
                 {
                   key: 'category-list',
                   icon: <CiBoxList className='fs-4' />,
-                  label: 'Category List',
+                  label: 'Product Categories',
                 },
                 {
                   key: 'color',
                   icon: <HiColorSwatch className='fs-4' />,
-                  label: 'Color',
+                  label: 'Add a Color',
                 },
                 {
                   key: 'color-list',
                   icon: <IoIosColorPalette className='fs-4' />,
-                  label: 'Color List',
+                  label: 'Colors',
                 },
               ]
             },
             {
               key: 'orders',
               icon: <FaClipboardList className='fs-4' />,
-              label: 'Orders',
+              label: 'Order',
             },
             {
               key: 'blogs',
               icon: <FaBloggerB className='fs-4' />,
-              label: 'Blogs',
+              label: 'Blog',
               children: [
                 {
                   key: 'blog',
                   icon: <ImBlog className='fs-4' />,
-                  label: 'Add Blog',
+                  label: 'Add a Blog',
                 },
                 {
                   key: 'blog-list',
                   icon: <FaBloggerB className='fs-4' />,
-                  label: 'Blog List',
+                  label: 'Blogs',
                 },
                 {
                   key: 'blog-category',
                   icon: <BiCategory className='fs-4' />,
-                  label: 'Blog Category',
+                  label: 'Add a Blog Category',
                 },
                 {
                   key: 'blog-category-list',
                   icon: <FaBloggerB className='fs-4' />,
-                  label: 'Blog Category List',
+                  label: 'Blog Categories',
                 },
               ]
             },
             {
               key: 'enquiries',
               icon: <FaQuestionCircle className='fs-4' />,
-              label: 'Enquiries',
+              label: 'Enquiry',
             },
           ]}
         />

@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { getAllBrands } from "../features/brands/brandSlice";
 import { useSelector } from "react-redux";
-import { getAllProductCategories } from "../features/categories/categorySlice";
+import { getAllProductCategories } from "../features/productCategories/productCategorySlice";
 import { getAllColors } from "../features/colors/colorSlice";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
@@ -58,7 +58,7 @@ function AddProduct() {
 	}
 
   const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
-  const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
+  const productCategories: categoriesProps[] = useSelector((state: any) => state.productCategories.productCategories)
   const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
   const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
   const newProduct: newProductProps = useSelector((state: any) => state.products)
@@ -200,7 +200,7 @@ function AddProduct() {
              className='form-control py-3 mb-3' id="">
               <option value="">Select Category</option>
               {
-                categories.map((category, key) => (
+                productCategories.map((category, key) => (
                   <option key={key} value={category.title}>
                     {category.title}
                   </option>

@@ -1,19 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import blogCategoryService from "./blogCategoryService";
-import blogService from "../blogs/blogService";
 
-
-export const getAllBlogCategories = createAsyncThunk('blogCategoy/get-blogCategories', async (_, thunkAPI) => {
+export const getAllBlogCategories = createAsyncThunk('category/get-blog-categories', async (_, thunkAPI) => {
     try {
-        return await blogCategoryService.getAllProductCategories();
+        return await blogCategoryService.getAllBlogCategories();
     } catch (e){
         return thunkAPI.rejectWithValue(e);
     }
 })
 
-export const createABlog = createAsyncThunk('blog/create-blogs', async (blogData: {}, thunkAPI) => {
+export const createABlogCategory = createAsyncThunk('category/create-product-categories', async (category: {}, thunkAPI) => {
     try {
-        return await blogService.createBlogs(blogData);
+        return await blogCategoryService.createABlogCategory(category);
     } catch (e){
         return thunkAPI.rejectWithValue(e);
     }
@@ -21,6 +19,7 @@ export const createABlog = createAsyncThunk('blog/create-blogs', async (blogData
 
 const initialState = {
     blogCategories: [],
+    createdBlogCategory: [],
     isError: false,
     isLoading: false,
     isSuccess: false,
@@ -49,6 +48,24 @@ export const blogCategorySlice = createSlice({
                 state.isError = true,
                 state.isSuccess = false,
                 state.blogCategories = null!,
+                state.message = action.error.message!
+            })
+            .addCase(createABlogCategory.pending, (state) => {
+                state.isLoading = true
+            })
+
+            .addCase(createABlogCategory.fulfilled, (state, action) => {
+                state.isLoading = false,
+                state.isError = false,
+                state.isSuccess = true,
+                state.createdBlogCategory = action.payload!
+            })
+
+            .addCase(createABlogCategory.rejected, (state, action) => {
+                state.isLoading = false,
+                state.isError = true,
+                state.isSuccess = false,
+                state.createdBlogCategory = null!,
                 state.message = action.error.message!
             })
     },

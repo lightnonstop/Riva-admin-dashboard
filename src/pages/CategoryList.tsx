@@ -4,7 +4,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { AppDispatch } from '../app/store';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllProductCategories } from '../features/categories/categorySlice';
+import { getAllProductCategories } from '../features/productCategories/productCategorySlice';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom';
@@ -39,13 +39,13 @@ function CategoryList(){
 	interface categoriesProps{
 		title: string;
 	}
-	const categories: categoriesProps[] = useSelector((state: any) => state.categories.categories)
+	const productCategories: categoriesProps[] = useSelector((state: any) => state.productCategories.productCategories)
 	
 	const data1: DataType[] = [];
-	for (let i = 0; i < categories.length; i++){
+	for (let i = 0; i < productCategories.length; i++){
 			data1.push({
 				key: i + 1,
-				name: `${categories[i].title}`,
+				name: `${productCategories[i].title}`,
 				action: (
 					<>
 						<Link className='fs-3 text-danger' to='/'>
