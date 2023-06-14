@@ -26,12 +26,13 @@ import { RiCoupon2Line, RiCoupon3Line, RiFileList3Line } from 'react-icons/ri';
 const { Header, Sider, Content } = Layout;
 function MainLayout() {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const navigate = useNavigate();
+ 
   return (
-    <Layout>
+    <Layout /*onContextMenu={(e) => e.preventDefault()} */>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
           <h2 className='text-white fs-5 text-center py-3 mb-0'>
