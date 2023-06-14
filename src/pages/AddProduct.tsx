@@ -98,7 +98,7 @@ function AddProduct() {
       formik.resetForm();
       setProductColor([]);
       setTimeout(() => {
-        navigate('/admin/product-list')
+        navigate('/admin/products')
       }, 3000)
     }
   });
