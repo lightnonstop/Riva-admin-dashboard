@@ -5,6 +5,8 @@ import { MainLayout } from './components';
 import AddBrand from './pages/AddBrand';
 import AddProduct from './pages/AddProduct';
 import AddProductCategory from './pages/AddProductCategory';
+import Coupons from './pages/Coupons';
+import AddCoupon from './pages/AddCoupon';
 function App() {
   return (
     <Router>
@@ -29,6 +31,8 @@ function App() {
 					<Route path='products' element={<Products />} />
 					<Route path='add-product' element={<AddProduct />} />
 					<Route path='add-blog' element={<AddBlog />} />
+					<Route path='add-coupon' element={<AddCoupon />} />
+					<Route path='coupons' element={<Coupons />} />
 			</Route>
       </Routes>
     </Router>
