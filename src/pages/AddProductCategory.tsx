@@ -43,7 +43,7 @@ function AddProductCategory() {
       
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/category-list')
+        navigate('/admin/product-categories')
       }, 3000)
     }
   });

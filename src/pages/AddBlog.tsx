@@ -41,10 +41,9 @@ function AddBlog() {
   const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
   const newBlog: newBlogProps = useSelector((state: any) => state.blogs)
   const blogCategories: blogCategoriesProps[] = useSelector((state: any) => state.blogCategories.blogCategories)
-  // console.log(newBlog);
   
   const { isSuccess, isError, isLoading, createdBlog } = newBlog;
-
+  
   useEffect(() => {
     dispatch(getAllBlogCategories());
   }, [])
@@ -76,28 +75,6 @@ function AddBlog() {
       }, 3000)
     }
   });
-  // const formik = useFormik({
-  //   initialValues: {
-  //     title: '',
-  //     description: '',
-      
-  //     image: [],
-      
-  //     category: '',
-      
-  //   },
-  //   validationSchema: schema,
-  //   onSubmit: (values) => {
-  //     dispatch(createABlog(values))
-  //     console.log(values);
-      
-  //     formik.resetForm();
-  //     // setProductColor([]);
-  //     setTimeout(() => {
-  //       navigate('/admin/blogs')
-  //     }, 3000)
-  //   }
-  // });
 
   const imageArr: any= [];
 

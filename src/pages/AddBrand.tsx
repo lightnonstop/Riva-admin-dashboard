@@ -40,7 +40,7 @@ function AddBrand() {
       dispatch(createABrand(values))
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/brand-list')
+        navigate('/admin/brands')
       }, 3000)
     }
   });

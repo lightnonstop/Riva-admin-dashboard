@@ -62,6 +62,7 @@ function AddProduct() {
   const colors: colorsProps[] = useSelector((state: any) => state.colors.colors)
   const images: imagesProps[] = useSelector((state: any) => state.uploads.images)
   const newProduct: newProductProps = useSelector((state: any) => state.products)
+  
 
   const { isSuccess, isError, isLoading, createdProduct } = newProduct;
   useEffect(() => {

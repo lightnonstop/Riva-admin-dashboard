@@ -43,7 +43,7 @@ function AddColor() {
       
       formik.resetForm();
       setTimeout(() => {
-        navigate('/admin/color-list')
+        navigate('/admin/colors')
       }, 3000)
     }
   });

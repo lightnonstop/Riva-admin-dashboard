@@ -44,8 +44,8 @@ function Blogs(){
 		title: string;
 		category: string;
 	}
-	const blogs: blogsProps[] = useSelector((state: any) => state.blogs.blogs)
 	
+	const blogs: blogsProps[] = useSelector((state: any) => state.blogs.blogs)
 	const data1: DataType[] = [];
 	for (let i = 0; i < blogs.length; i++){
 			data1.push({
