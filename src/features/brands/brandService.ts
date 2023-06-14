@@ -4,7 +4,7 @@ import { config } from "../auth/authService";
 
 
 const getBrands = async () => {
-    const response = await axios.get(`${baseUrl}brand/`);
+    const response = await axios.get(`${baseUrl}brand/`, config);
     
     return response.data;
 };
