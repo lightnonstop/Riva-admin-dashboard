@@ -5,15 +5,15 @@ import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
-import { createABrand } from '../features/brands/brandSlice';
+
+import { createABrand, resetBrandState } from '../features/brands/brandSlice';
 import { useEffect } from 'react';
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required')
 })
 function AddBrand() {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+ 
 
   interface newBrandProps{
 		isSuccess : string;
@@ -40,6 +40,7 @@ function AddBrand() {
       dispatch(createABrand(values))
       formik.resetForm();
       setTimeout(() => {
+        dispatch(resetBrandState())
         //navigate('/admin/brands')
       }, 3000)
     }

@@ -15,7 +15,7 @@ import { getAllColors } from "../features/colors/colorSlice";
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
 import { createAProduct, resetProductState } from "../features/products/productSlice";
-import { useNavigate } from "react-router-dom";
+
 /* All form Validations */
 let schema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -32,7 +32,7 @@ let schema = Yup.object().shape({
 function AddProduct() {
   /* Products states */
   const [productColor, setProductColor] = useState<any>([]);
-  const navigate = useNavigate();
+ 
 
   interface brandsProps{
     title: string;
