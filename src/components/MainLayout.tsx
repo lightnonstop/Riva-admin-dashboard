@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { AiOutlineDashboard, AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBloggerB, FaClipboardList, FaQuestionCircle, FaUsers } from 'react-icons/fa';
-import { SiBrandfolder } from 'react-icons/si';
+import { SiBrandfolder, SiMarketo } from 'react-icons/si';
 import { BiCategory } from 'react-icons/bi';
 import { CiBoxList } from 'react-icons/ci';
-import { BsViewList } from 'react-icons/bs';
+import { BsDatabaseFillAdd, BsViewList } from 'react-icons/bs';
 import { TbBrandProducthunt } from 'react-icons/tb';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HiColorSwatch } from 'react-icons/hi';
 import { IoIosColorPalette } from 'react-icons/io';
-import { ImBlog } from 'react-icons/im';
 import { IoIosNotifications } from 'react-icons/io';
 import { Link, Outlet } from 'react-router-dom';
 import {
@@ -22,7 +21,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { RiFileList3Line } from 'react-icons/ri';
+import { RiCoupon2Line, RiCoupon3Line, RiFileList3Line } from 'react-icons/ri';
 
 const { Header, Sider, Content } = Layout;
 function MainLayout() {
@@ -68,7 +67,7 @@ function MainLayout() {
               children: [
                 {
                   key: 'add-product',
-                  icon: <TbBrandProducthunt className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a product',
                 },
                 {
@@ -78,7 +77,7 @@ function MainLayout() {
                 },
                 {
                   key: 'add-brand',
-                  icon: <SiBrandfolder className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a brand',
                 },
                 {
@@ -88,7 +87,7 @@ function MainLayout() {
                 },
                 {
                   key: 'add-product-category',
-                  icon: <BiCategory className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a product category',
                 },
                 {
@@ -98,7 +97,7 @@ function MainLayout() {
                 },
                 {
                   key: 'add-color',
-                  icon: <HiColorSwatch className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a color',
                 },
                 {
@@ -114,13 +113,30 @@ function MainLayout() {
               label: 'Order',
             },
             {
+              key: 'Marketing',
+              icon: <SiMarketo className='fs-4' />,
+              label: 'Marketing',
+              children: [
+                {
+                  key: 'add-coupon',
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
+                  label: 'Add a coupon',
+                },
+                {
+                  key: 'coupons',
+                  icon: <RiCoupon3Line className='fs-4' />,
+                  label: 'Coupons',
+                },
+              ]
+            },
+            {
               key: 'blog',
               icon: <FaBloggerB className='fs-4' />,
               label: 'Blog',
               children: [
                 {
                   key: 'add-blog',
-                  icon: <ImBlog className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a blog',
                 },
                 {
@@ -130,7 +146,7 @@ function MainLayout() {
                 },
                 {
                   key: 'add-blog-category',
-                  icon: <BiCategory className='fs-4' />,
+                  icon: <BsDatabaseFillAdd className='fs-4' />,
                   label: 'Add a blog category',
                 },
                 {
