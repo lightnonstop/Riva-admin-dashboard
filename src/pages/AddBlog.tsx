@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Input from '../components/Input'
 import Dropzone from 'react-dropzone';
 import { getUploadingImages, getDeletingImages } from "../features/uploads/uploadSlice";
-import { useNavigate } from "react-router-dom";
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ let schema = Yup.object().shape({
 })
 
 function AddBlog() {
-  const navigate = useNavigate();
+ 
   const dispatch = useDispatch<AppDispatch>();
   interface imagesProps{
 		url: string;
