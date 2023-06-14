@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+
 import { useEffect } from 'react';
 import { createABlogCategory, resetBlogCategoryState } from '../features/blogCategories/blogCategorySlice';
 let schema = Yup.object().shape({
@@ -13,7 +13,7 @@ let schema = Yup.object().shape({
 })
 function AddBlogCategory() {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+ 
 
   interface newBlogCategoryProps{
 		isSuccess : string;
