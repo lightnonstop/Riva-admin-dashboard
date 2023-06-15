@@ -47,7 +47,7 @@ function AddBrand() {
       toast.success('Your brand has been updated successfully!');
         setTimeout(() => {
           navigate('/admin/brands')
-        }, 3000)
+        }, 300)
     }
     if (isError){
       toast.success('Something went wrong!');
@@ -69,9 +69,6 @@ function AddBrand() {
       } else {
         dispatch(createABrand(values))
         formik.resetForm();
-        setTimeout(() => {
-          dispatch(resetBrandState())
-        }, 3000)
       }
     }
   });
