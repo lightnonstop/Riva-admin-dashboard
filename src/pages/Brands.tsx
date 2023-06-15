@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ColumnsType } from 'antd/es/table';
-import { getAllBrands } from '../features/brands/brandSlice';
+import { getAllBrands, resetBrandState } from '../features/brands/brandSlice';
 import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { AiFillDelete } from 'react-icons/ai';
@@ -30,14 +30,17 @@ const columns: ColumnsType<DataType> = [
 ];
 function Brands(){
 	const dispatch = useDispatch<AppDispatch>();
+	const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
+	console.log(brands);
+	
 	useEffect(() => {
+		dispatch(resetBrandState())
 		dispatch(getAllBrands());
-		
 	}, [])
 	interface brandsProps{
+		_id: any;
 		title: string;
 	}
-	const brands: brandsProps[] = useSelector((state: any) => state.brands.brands)
 	
 	const data1: DataType[] = [];
 	for (let i = 0; i < brands.length; i++){
@@ -46,7 +49,7 @@ function Brands(){
 				name: `${brands[i].title}`,
 				action: (
 					<>
-						<Link className='fs-3 text-danger' to='/'>
+						<Link className='fs-3 text-danger' to={`/admin/brand/${brands[i]._id}`}>
 							<BiEdit />
 						</Link>
 						<Link className='fs-3 text-danger ms-3' to='/'>
