@@ -21,6 +21,7 @@ function AddBrand() {
     isLoading : string;
     createdBrand : string;
 	}
+
   const newBrand: newBrandProps = useSelector((state: any) => state.brands)
   const { isSuccess, isError, isLoading, createdBrand } = newBrand;
   useEffect(() => {
