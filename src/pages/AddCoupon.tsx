@@ -32,7 +32,6 @@ function AddCoupon() {
       toast.success('Something went wrong!');
     }
   }, [isSuccess, isError, isLoading,])
-  console.log(newCoupon);
   
   const formik = useFormik({
     initialValues: {
