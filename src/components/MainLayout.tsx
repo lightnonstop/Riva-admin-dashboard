@@ -1,27 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineDashboard, AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBloggerB, FaClipboardList, FaQuestionCircle, FaUsers } from 'react-icons/fa';
-import { SiBrandfolder, SiMarketo } from 'react-icons/si';
-import { BiCategory } from 'react-icons/bi';
+import { SiMarketo } from 'react-icons/si';
 import { CiBoxList } from 'react-icons/ci';
 import { BsDatabaseFillAdd, BsViewList } from 'react-icons/bs';
-import { TbBrandProducthunt } from 'react-icons/tb';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { HiColorSwatch } from 'react-icons/hi';
 import { IoIosColorPalette } from 'react-icons/io';
 import { IoIosNotifications } from 'react-icons/io';
 import { Link, Outlet } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { RiCoupon2Line, RiCoupon3Line, RiFileList3Line } from 'react-icons/ri';
+import { RiCoupon3Line, RiFileList3Line } from 'react-icons/ri';
 
 const { Header, Sider, Content } = Layout;
 function MainLayout() {
@@ -220,7 +214,7 @@ function MainLayout() {
         >
           <ToastContainer
           position='top-right'
-          autoClose={250}
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop={true}
           closeOnClick
