@@ -13,10 +13,32 @@ const createBlogs = async (blog: {}) => {
     
     return response.data;
 };
+const getBlog = async (id: {}) => {
+    const response = await axios.get(`${baseUrl}blog/${id}`, config);
+    
+    return response.data;
+};
+const updateBlog = async (blogData: { id: string; blogValues: { title: string; description: string; category: string; images: []; } }) => {
+    const response = await axios.put(`${baseUrl}blog/${blogData.id}`, {
+        title: blogData.blogValues.title,
+        category: blogData.blogValues.category,
+        description: blogData.blogValues.description,
+        images: blogData.blogValues.images
+    }, config);
+    
+    return response.data;
+};
 
+const deleteBlog = async (id: string) => {
+    const response = await axios.delete(`${baseUrl}blog/${id}`, config);
+    return response.data;
+};
 const blogService = {
     getBlogs,
     createBlogs,
+    getBlog,
+    updateBlog,
+    deleteBlog,
 };
 
 export default blogService;
