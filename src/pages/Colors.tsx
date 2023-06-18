@@ -32,11 +32,11 @@ const columns: ColumnsType<DataType> = [
 
 function Colors(){
 	const [open, setOpen] = useState<boolean>(false);
-	const [colorId, setBrandId] = useState<string>('');
+	const [colorId, setColorId] = useState<string>('');
 
 	const showModal = (e: any) => {
 		setOpen(true);
-		setBrandId(e);
+		setColorId(e);
 	}
 
 	const hideModal = () => {
