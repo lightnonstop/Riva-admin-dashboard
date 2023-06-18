@@ -19,3 +19,4 @@ export { default as AddBrand } from './AddBrand';
 export { default as AddProduct } from './AddProduct';
 export { default as AddProductCategory } from './AddProductCategory';
 export { default as AddColor } from './AddColor';
+export { default as ViewEnquiry } from './ViewEnquiry';
