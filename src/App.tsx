@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddBlog, AddBlogCategory, AddColor, BlogCategories, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand } from './pages';
+import { AddBlogCategory, AddColor, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand, BlogCategories, AddBlog } from './pages';
 import { MainLayout } from './components';
 function App() {
   return (
@@ -15,19 +15,24 @@ function App() {
 					<Route path='blogs' element={<Blogs />} />        
 					<Route path='blog-categories' element={<BlogCategories />} />
 					<Route path='add-blog-category' element={<AddBlogCategory />} />
+					<Route path='blog-category/:id' element={<AddBlogCategory />} />
 					<Route path='orders' element={<Orders />} />
 					<Route path='colors' element={<Colors />} />
 					<Route path='add-color' element={<AddColor />} />
+					<Route path='color/:id' element={<AddColor />} />
 					<Route path='customers' element={<Customers />} />
 					<Route path='product-categories' element={<ProductCategories />} />
 					<Route path='add-product-category' element={<AddProductCategory />} />
+					<Route path='product-category/:id' element={<AddProductCategory />} />
 					<Route path='brands' element={<Brands />} />
 					<Route path='add-brand' element={<AddBrand />} />
 					<Route path='brand/:id' element={<AddBrand />} />
 					<Route path='products' element={<Products />} />
 					<Route path='add-product' element={<AddProduct />} />
 					<Route path='add-blog' element={<AddBlog />} />
+					<Route path='blog/:id' element={<AddBlog />} />
 					<Route path='add-coupon' element={<AddCoupon />} />
+					<Route path='coupon/:id' element={<AddCoupon />} />
 					<Route path='coupons' element={<Coupons />} />
 			</Route>
       </Routes>
