@@ -16,8 +16,9 @@ const getEnquiry = async (id: string) => {
     
     return response.data;
 };
-const updateEnquiry = async (enquiryData: { id: string; enquiryValues: { status: string } }) => {
-    const response = await axios.put(`${baseUrl}enquiry/${enquiryData.id}`, config);
+const updateEnquiry = async (enquiryData: { id: string; enquiryValues: string }) => {
+    const response = await axios.put(`${baseUrl}enquiry/${enquiryData.id}`, enquiryData,config);
+
     return response.data;
 };
 
