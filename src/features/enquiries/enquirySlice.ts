@@ -23,7 +23,7 @@ export const getAnEnquiry = createAsyncThunk('enquiry/get-enquiry', async (id: s
         return thunkAPI.rejectWithValue(e);
     }
 })
-export const updateAnEnquiry = createAsyncThunk('enquiry/update-enquiry', async (updateData: { id: string; enquiryValues: { status: string } }, thunkAPI) => {
+export const updateAnEnquiry = createAsyncThunk('enquiry/update-enquiry', async (updateData: { id: string; enquiryValues:  string }, thunkAPI) => {
     try {
         return await enquiryService.updateEnquiry(updateData);
     } catch (e){
