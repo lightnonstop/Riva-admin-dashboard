@@ -16,7 +16,7 @@ export const createABlogCategory = createAsyncThunk('category/create-product-cat
         return thunkAPI.rejectWithValue(e);
     }
 })
-export const getABlogCategory = createAsyncThunk('category/get-category', async (id: {}, thunkAPI) => {
+export const getABlogCategory = createAsyncThunk('category/get-category', async (id: string, thunkAPI) => {
     try {
         return await blogCategoryService.getblogCategory(id);
     } catch (e){

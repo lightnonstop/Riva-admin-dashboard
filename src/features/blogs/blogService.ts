@@ -13,7 +13,7 @@ const createBlogs = async (blog: {}) => {
     
     return response.data;
 };
-const getBlog = async (id: {}) => {
+const getBlog = async (id: string) => {
     const response = await axios.get(`${baseUrl}blog/${id}`, config);
     
     return response.data;

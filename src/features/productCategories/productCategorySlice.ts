@@ -17,7 +17,7 @@ export const createAProductCategory = createAsyncThunk('category/create-product-
     }
 })
 
-export const getAProductCategory = createAsyncThunk('category/get-product-category', async (id: {}, thunkAPI) => {
+export const getAProductCategory = createAsyncThunk('category/get-product-category', async (id: string, thunkAPI) => {
     try {
         return await productCategoryService.getProductCategory(id);
     } catch (e){

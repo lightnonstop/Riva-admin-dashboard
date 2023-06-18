@@ -17,7 +17,7 @@ export const createABlog = createAsyncThunk('blog/create-blogs', async (blogData
         return thunkAPI.rejectWithValue(e);
     }
 })
-export const getABlog = createAsyncThunk('blog/get-blog', async (id: {}, thunkAPI) => {
+export const getABlog = createAsyncThunk('blog/get-blog', async (id: string, thunkAPI) => {
     try {
         return await blogService.getBlog(id);
     } catch (e){

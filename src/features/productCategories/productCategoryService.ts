@@ -13,7 +13,7 @@ const createProductCategory = async (category: {}) => {
     return response.data;
 };
 
-const getProductCategory = async (id: {}) => {
+const getProductCategory = async (id: string) => {
     const response = await axios.get(`${baseUrl}category-product/${id}`, config);
     
     return response.data;

@@ -12,7 +12,7 @@ const createABlogCategory = async (category: {}) => {
     
     return response.data;
 };
-const getblogCategory = async (id: {}) => {
+const getblogCategory = async (id: string) => {
     const response = await axios.get(`${baseUrl}category-blog/${id}`, config);
     
     return response.data;

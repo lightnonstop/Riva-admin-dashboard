@@ -13,7 +13,7 @@ const createBrands = async (brand: {}) => {
     
     return response.data;
 };
-const getBrand = async (id: {}) => {
+const getBrand = async (id: string) => {
     const response = await axios.get(`${baseUrl}brand/${id}`, config);
     
     return response.data;

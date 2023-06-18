@@ -18,7 +18,7 @@ export const createAColor = createAsyncThunk('color/create-colors', async (color
     }
 })
 
-export const getAColor = createAsyncThunk('color/get-color', async (id: {}, thunkAPI) => {
+export const getAColor = createAsyncThunk('color/get-color', async (id: string, thunkAPI) => {
     try {
         return await colorService.getColor(id);
     } catch (e){

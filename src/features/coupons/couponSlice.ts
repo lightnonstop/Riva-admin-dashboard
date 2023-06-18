@@ -10,7 +10,7 @@ export const getAllCoupons = createAsyncThunk('coupon/get-coupons', async (_, th
     }
 })
 
-export const getACoupon = createAsyncThunk('coupon/get-coupon', async (id: {}, thunkAPI) => {
+export const getACoupon = createAsyncThunk('coupon/get-coupon', async (id: string, thunkAPI) => {
     try {
         return await couponService.getCoupon(id);
     } catch (e){

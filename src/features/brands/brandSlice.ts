@@ -18,7 +18,7 @@ export const createABrand = createAsyncThunk('brand/create-brands', async (brand
     }
 })
 
-export const getABrand = createAsyncThunk('brand/get-brand', async (id: {}, thunkAPI) => {
+export const getABrand = createAsyncThunk('brand/get-brand', async (id: string, thunkAPI) => {
     try {
         return await brandService.getBrand(id);
     } catch (e){

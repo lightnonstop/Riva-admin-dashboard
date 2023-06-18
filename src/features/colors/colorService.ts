@@ -14,7 +14,7 @@ const createColors = async (color: {}) => {
     return response.data;
 };
 
-const getColor = async (id: {}) => {
+const getColor = async (id: string) => {
     const response = await axios.get(`${baseUrl}color/${id}`, config);
     
     return response.data;

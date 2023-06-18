@@ -14,7 +14,7 @@ const createCoupons = async (coupon: {}) => {
     return response.data;
 };
 
-const getCoupon = async (id: {}) => {
+const getCoupon = async (id: string) => {
     const response = await axios.get(`${baseUrl}coupon/${id}`, config);
     
     return response.data;
