@@ -121,18 +121,18 @@ export const enquirySlice = createSlice({
                 state.enquiryStatus = null!
                 state.message = action.error.message!
             })
-            .addCase(getAnEnquiry.pending, (state) => {
+            .addCase(updateAnEnquiry.pending, (state) => {
                 state.isLoading = true
             })
 
-            .addCase(getAnEnquiry.fulfilled, (state, action) => {
+            .addCase(updateAnEnquiry.fulfilled, (state, action) => {
                 state.isLoading = false,
                 state.isError = false,
                 state.isSuccess = true,
-                state.updatedEnquiry = action.payload.name!
+                state.updatedEnquiry = action.payload!
             })
 
-            .addCase(getAnEnquiry.rejected, (state, action) => {
+            .addCase(updateAnEnquiry.rejected, (state, action) => {
                 state.isLoading = false,
                 state.isError = true,
                 state.isSuccess = false,
