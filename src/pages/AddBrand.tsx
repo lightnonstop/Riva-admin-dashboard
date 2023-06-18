@@ -14,6 +14,9 @@ let schema = Yup.object().shape({
 })
 function AddBrand() {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const location = useLocation();
+  const brandId = location.pathname.split('/')[3];
   interface newBrandProps{
 		isSuccess : string;
     isError : string;
@@ -24,11 +27,8 @@ function AddBrand() {
 	}
 
   const newBrand: newBrandProps = useSelector((state: any) => state.brands)
+  
   const { isSuccess, isError, isLoading, createdBrand, brandName, updatedBrand } = newBrand;
-
-  const dispatch = useDispatch<AppDispatch>();
-  const location = useLocation();
-  const brandId = location.pathname.split('/')[3];
   
   useEffect(() => {
     if (brandId !== undefined){

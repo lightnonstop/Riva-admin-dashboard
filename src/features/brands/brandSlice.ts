@@ -26,13 +26,22 @@ export const getABrand = createAsyncThunk('brand/get-brand', async (id: {}, thun
     }
 })
 
-export const updateABrand = createAsyncThunk('brand/update-brand', async (id: {}, thunkAPI) => {
+export const updateABrand = createAsyncThunk('brand/update-brand', async (updateData: { id: string; brandValues: { title: string } }, thunkAPI) => {
     try {
-        return await brandService.updateBrand(id);
+        return await brandService.updateBrand(updateData);
     } catch (e){
         return thunkAPI.rejectWithValue(e);
     }
 })
+
+export const deleteABrand = createAsyncThunk('brand/delete-brand', async (id: string, thunkAPI) => {
+    try {
+        return await brandService.deleteBrand(id);
+    } catch (e){
+        return thunkAPI.rejectWithValue(e);
+    }
+})
+
 export const resetBrandState = createAction('Reset_all');
 
 type initialStateProps = {
@@ -42,8 +51,9 @@ type initialStateProps = {
     isSuccess: boolean,
     message: string;
     createdBrand?: [];
-    brandName?: '',
-    updatedBrand?: '',
+    brandName?: string,
+    updatedBrand?: string,
+    deletedBrand?: [],
 }
 const initialState: initialStateProps = {
     brands: [],
@@ -132,6 +142,25 @@ export const brandSlice = createSlice({
                 state.isError = true,
                 state.isSuccess = false,
                 state.updatedBrand = null!,
+                state.message = action.error.message!
+            })
+
+            .addCase(deleteABrand.pending, (state) => {
+                state.isLoading = true
+            })
+
+            .addCase(deleteABrand.fulfilled, (state, action) => {
+                state.isLoading = false,
+                state.isError = false,
+                state.isSuccess = true,
+                state.deletedBrand = action.payload!
+            })
+
+            .addCase(deleteABrand.rejected, (state, action) => {
+                state.isLoading = false,
+                state.isError = true,
+                state.isSuccess = false,
+                state.deletedBrand = null!,
                 state.message = action.error.message!
             })
             .addCase(resetBrandState, () => initialState)

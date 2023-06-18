@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../utils/base_url";
-import { config } from "../auth/authService";
+import { config } from "../../utils/axiosConfig";
 
 const getOrders = async () => {
     const response = await axios.get(`${baseUrl}user/getallorders/`, config);

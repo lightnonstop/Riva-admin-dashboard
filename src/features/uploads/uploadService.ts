@@ -1,5 +1,5 @@
 import axios from "axios";
-import { config } from "../auth/authService";
+import { config } from "../../utils/axiosConfig";
 import { baseUrl } from "../../utils/base_url";
 
 const uploadImages = async (data: any) => {

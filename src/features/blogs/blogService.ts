@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../utils/base_url";
-import { config } from "../auth/authService";
+import { config } from "../../utils/axiosConfig";
 
 
 const getBlogs = async () => {
@@ -18,7 +18,7 @@ const getBlog = async (id: {}) => {
     
     return response.data;
 };
-const updateBlog = async (blogData: { id: string; blogValues: { title: string; description: string; category: string; images: []; } }) => {
+const updateBlog = async (blogData: { id: string; blogValues: { title: string; description: string; category: string; images: never[]; } }) => {
     const response = await axios.put(`${baseUrl}blog/${blogData.id}`, {
         title: blogData.blogValues.title,
         category: blogData.blogValues.category,
