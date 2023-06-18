@@ -1,18 +1,19 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddBlogCategory, AddColor, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand, BlogCategories, AddBlog } from './pages';
+import { AddBlogCategory, AddColor, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand, BlogCategories, AddBlog, ViewEnquiry } from './pages';
 import { MainLayout } from './components';
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/admin' element={<MainLayout />}>
-          <Route index element={<Dashboard />} />
+	return (
+		<Router>
+			<Routes>
+				<Route path='/' element={<Login />} />
+				<Route path='/reset-password' element={<ResetPassword />} />
+				<Route path='/forgot-password' element={<ForgotPassword />} />
+				<Route path='/admin' element={<MainLayout />}>
+					<Route index element={<Dashboard />} />
 					<Route path='enquiries' element={<Enquiries />} />
-					<Route path='blogs' element={<Blogs />} />        
+					<Route path='enquiry/:id' element={<ViewEnquiry />} />
+					<Route path='blogs' element={<Blogs />} />
 					<Route path='blog-categories' element={<BlogCategories />} />
 					<Route path='add-blog-category' element={<AddBlogCategory />} />
 					<Route path='blog-category/:id' element={<AddBlogCategory />} />
@@ -34,10 +35,10 @@ function App() {
 					<Route path='add-coupon' element={<AddCoupon />} />
 					<Route path='coupon/:id' element={<AddCoupon />} />
 					<Route path='coupons' element={<Coupons />} />
-			</Route>
-      </Routes>
-    </Router>
-  );
+				</Route>
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
