@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddBlogCategory, AddColor, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand, BlogCategories, AddBlog, ViewEnquiry } from './pages';
+import { AddBlogCategory, AddColor, Blogs, Brands, ProductCategories, Colors, Customers, Dashboard, Enquiries, ForgotPassword, Login, Orders, Products, ResetPassword, AddProductCategory, AddProduct, AddCoupon, Coupons, AddBrand, BlogCategories, AddBlog, ViewOrder, ViewEnquiry } from './pages';
 import { MainLayout } from './components';
 function App() {
 	return (
@@ -18,6 +18,7 @@ function App() {
 					<Route path='add-blog-category' element={<AddBlogCategory />} />
 					<Route path='blog-category/:id' element={<AddBlogCategory />} />
 					<Route path='orders' element={<Orders />} />
+					<Route path='order/:id' element={<ViewOrder />} />
 					<Route path='colors' element={<Colors />} />
 					<Route path='add-color' element={<AddColor />} />
 					<Route path='color/:id' element={<AddColor />} />

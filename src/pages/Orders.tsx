@@ -54,7 +54,8 @@ function Orders(){
 		products: [];
 		createdAt: any;
 		paymentIntent: { amount: number};
-		orderBy: {firstname: string};
+		orderBy: {firstname: string, _id: string};
+		_id: string;
 	}
 	const orders: ordersProps[] = useSelector((state: any) => state.orders.orders)
 	
@@ -63,11 +64,9 @@ function Orders(){
 			data1.push({
 				key: i + 1,
 				name: `${orders[i].orderBy.firstname}`,
-				product: orders[i].products.map((product: { product: { title: string } }, key) => (
-					<ul className='list-unstyled' key={key}>
-						<li>{product.product.title}</li>
-					</ul>
-				)),
+				product: (
+					<Link to={`/admin/order/${orders[i].orderBy._id}`}>View Order</Link>
+				),
 				amount: orders[i].paymentIntent.amount,
 				date: new Date(orders[i].createdAt).toLocaleString(),
 				action: (

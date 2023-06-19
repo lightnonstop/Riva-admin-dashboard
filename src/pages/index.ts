@@ -20,3 +20,4 @@ export { default as AddProduct } from './AddProduct';
 export { default as AddProductCategory } from './AddProductCategory';
 export { default as AddColor } from './AddColor';
 export { default as ViewEnquiry } from './ViewEnquiry';
+export { default as ViewOrder } from './ViewOrder';
